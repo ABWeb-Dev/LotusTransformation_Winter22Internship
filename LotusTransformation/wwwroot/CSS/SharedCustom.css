@@ -56,10 +56,11 @@ body{
 }
 
 .Logo {
-    height: 6rem;
-    width: 6rem;
+    height: 5rem;
+    width: 7rem;
     position: absolute;
-    left: .5rem;
+    left: 0;
+    top:0;
 }
 
 div.nav-menu-positioning {
@@ -75,3 +76,7 @@ div.nav-menu-positioning {
     margin-left: 3rem;
 }
 
+.site-font-bold{
+    font-weight:bold;
+    font-size: 20px;
+}
