@@ -54,12 +54,13 @@ body{
     top: 3rem;
     left: 22rem;
 }
-
+/* Fixed the position of the logo to work better with what the client envision */
 .Logo {
-    height: 6rem;
-    width: 6rem;
+    height: 5rem;
+    width: 7rem;
     position: absolute;
-    left: .5rem;
+    left: 0;
+    top:0;
 }
 
 div.nav-menu-positioning {
@@ -74,4 +75,8 @@ div.nav-menu-positioning {
 .sign-in-up{
     margin-left: 3rem;
 }
-
+/* Added boldness to the font and also made it bigger */
+.site-font-bold{
+    font-weight:bold;
+    font-size: 20px;
+}

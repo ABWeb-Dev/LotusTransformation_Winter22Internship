@@ -24,7 +24,7 @@
         <nav class="navbar navbar-light navbar-expand-lg navigation-clean-button header-footer-color header-proportions">
             <div class="container">
 
-                <a asp-controller="LotusTransformation" asp-action="Home><img src="~/Images/Logo/R.png" class="Logo"></a>
+                <a asp-controller="LotusTransformation" asp-action="Home"><img src="~/Images/Logo/R.png" class="Logo"></a>
                 
                 <a class="navbar-brand heading-title" asp-controller="LotusTransformation" asp-action="Home">Lotus Transformation</a>
                 <a class="navbar-brand sub-heading-title" asp-controller="LotusTransformation" asp-action="Home">Hollistic Health and Wellness Coaching</a>
@@ -37,11 +37,11 @@
                 <div class="collapse navbar-collapse nav-menu-positioning" id="navcol-1">
 
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link site-links" asp-controller="LotusGeneral" asp-action="Home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link site-links" asp-controller="LotusGeneral" asp-action="About">About</a></li>
-                        <li class="nav-item"><a class="nav-link site-links" asp-controller="LotusGeneral" asp-action="Services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link site-links" asp-controller="LotusGeneral" asp-action="Meditations">Meditations</a></li>
-                        <li class="nav-item"><a class="nav-link site-links" asp-action="Inspiration">Inspiration</a></li>
+                        <li class="nav-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="About">About</a></li>
+                        <li class="nav-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Meditations">Meditations</a></li>
+                        <li class="nav-item"><a class="nav-link site-links site-font-bold" asp-action="Inspiration">Inspiration</a></li>
                     </ul>
 
                     <span class="navbar-text actions sign-in-up"> 
@@ -54,7 +54,7 @@
         </nav>
 
         <div class="container py-5 my-5 h-auto" style="background-color:#FAEBD7; border-radius: 15px;">
-            <h1 class="display-5 fw-bold">Welcome to Lotus Transformation!</h1>
+           
              @RenderBody()
         </div>
 
