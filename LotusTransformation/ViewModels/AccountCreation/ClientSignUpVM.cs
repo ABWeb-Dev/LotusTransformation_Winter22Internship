@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using LotusTransformation.Data;
+
+
 
 
 
 namespace LotusTransformation.ViewModels 
 
 {
-    public class UserSignUpVM 
+    public class ClientSignUpVM 
     {
 
         
@@ -56,30 +53,20 @@ namespace LotusTransformation.ViewModels
         [RegularExpression("^[A-Za-z0-9._%+-]*@[A-Za-z0-9.-]*\\.[A-Za-z0-9-]{2,}$",
         ErrorMessage = "Email is required and must be properly formatted.")]
         [EmailAddress]
-        public string PrimaryEmail { get; set; }
+        public string Email { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please a phone number")]
         [Phone]
-        public string PrimaryPhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please select phone type")]
-        public string PrimaryPhoneType { get; set; }
+        public string PhoneType { get; set; }
 
         // Optional user information, not required
         /// <summary>
         /// Below Fields are optional. They should still have the same Regex restrictions as the above form fields to prevent SQL Injects XSS attacks
         /// </summary>
-        [RegularExpression("^[A-Za-z0-9._%+-]*@[A-Za-z0-9.-]*\\.[A-Za-z0-9-]{2,}$",
-        ErrorMessage = "Email must be properly formatted.")]
-        [EmailAddress]
-        public string SecondaryEmail { get; set; }
-
         public DateTime DateOfBirth { get; set; }
-
-        [Phone]
-        public string SecondaryPhoneNumber { get; set; }
-
-        public string SecondaryPhoneType { get; set; }
 
         public char MiddleInitial { get; set; }
 

@@ -1,0 +1,36 @@
+﻿@model LotusTransformation.ViewModels.ClientResponses.ClientResponsesPreSessionViewModel;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h1>
+    Congratulations on creating your account, and thank you for joining Lotus Transformation!
+</h1>
+
+<p>In order to best guide you, I just need you to answer some short questions.</p>
+
+<p>First,please print, read and sign this document<a href="~/CoachingForms/Coaching_Agreement_.pdf" download="true"></a>. You may upload it through your by going to
+    Account>Documents>Upload</p>
+
+<p>You only need to fill this document out once.</p>
+
+<form>
+    <label asp-for="QuestionOne">How was your week?</label>
+    <textarea></textarea>
+
+    <label asp-for="QuestionTwo">What do you want to get out of our session?</label>
+    <textarea></textarea>
+
+    <label asp-for="QuestionFour">What were your wins and challenges for the week?</label>
+    <textarea></textarea>
+
+    <label asp-for="QuestionFive">AWhat do you want to be held accountable for?</label>
+    <textarea></textarea>
+
+    <label asp-for="QuestionSix">What issues do you want to deepen in your session today?</label>
+    <textarea></textarea>
+
+    <label asp-for="QuestionSeven">Anything else?</label>
+    <textarea></textarea>
+</form>

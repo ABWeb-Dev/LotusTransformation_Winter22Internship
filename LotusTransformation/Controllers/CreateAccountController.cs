@@ -12,7 +12,6 @@ namespace LotusTransformation.Controllers
     {
         
         private readonly LotusTransformationDBContext _efac;
-        private ExistingUserVM _existingUser;
 
         public CreateAccountController(LotusTransformationDBContext Acc)
         {
@@ -26,33 +25,19 @@ namespace LotusTransformation.Controllers
         }
 
         [HttpPost][RequireHttps]
-        public IActionResult AccountCreation(UserSignUpVM NewUser)
+        public IActionResult AccountCreation(ClientSignUpVM NewUser)
         {
 
-            _existingUser = new ExistingUserVM() { Account = _efac.UserInformation };
 
             if (ModelState.IsValid)
             {
-                UserInformation user = new UserInformation()
+                ClientAccountInformation user = new ClientAccountInformation()
                 {
                     FirstName = NewUser.FirstName,
+                    MiddleInitial = NewUser.MiddleInitial,
                     LastName = NewUser.LastName,
-                    Address1 = NewUser.Address1,
-                    City = NewUser.City,
-                    StateOrProvince = NewUser.StateOrProvince,
-                    ZIPorPostal = NewUser.ZIPorPostal,
-                    Country = NewUser.Country,
                     UserName = NewUser.UserName,
                     Password = NewUser.Password,
-                    PrimaryEmail = NewUser.PrimaryEmail,
-                    PrimaryPhoneNumber = NewUser.PrimaryPhoneNumber,
-                    PrimaryPhoneType = NewUser.PrimaryPhoneType,
-                    SecondaryEmail = NewUser.SecondaryEmail,
-                    DateOfBirth = NewUser.DateOfBirth,
-                    SecondaryPhoneNumber = NewUser.SecondaryPhoneNumber,
-                    SecondaryPhoneType = NewUser.SecondaryPhoneType,
-                    MiddleInitial = NewUser.MiddleInitial,
-                    Address2 = NewUser.Address2,
                 };
 
 

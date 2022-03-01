@@ -447,6 +447,7 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Models\MailModels\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

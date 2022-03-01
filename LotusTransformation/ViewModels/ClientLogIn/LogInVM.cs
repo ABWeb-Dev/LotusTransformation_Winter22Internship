@@ -11,13 +11,12 @@ namespace LotusTransformation.ViewModels
     {
 
         [Required]
-        [ForeignKey("UserID")]
-        [Key()]
         public long UserID { get; set; }
+        [Required]
         public string UserName { get; set; }
-
+        [Required]
         public string Email { get; set; }
-
+        [Required]
         public string Password { get; set; }
 
 
