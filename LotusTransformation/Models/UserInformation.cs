@@ -8,44 +8,52 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LotusTransformation.Models
 {
-    [Table("UserInformation")]
+   
     public class UserInformation
     {
-        /// <summary>
-        /// User Key is auto generated based upon the information provided by the user from the sign-up form. Each key needs to be unique. The key is checked against the database.
-        /// If it is duplicated, it will be shifted over to the next available value. In a sense, this is the user's "Account number" and is used as the primary key in the 
-        /// database
-        /// </summary>
+
         [Required]
         [Key]
         public long UserID { get; set; }
-        
+
+        [Required]
         public string FirstName { get; set; }
 
         public char MiddleInitial { get; set; } // Optional
 
+        [Required]
         public string LastName { get; set; }
-        
-        public string Address1 { get; set; }
 
+        [Required]
+        public string Address1 { get; set; }
+        
         public string Address2 { get; set; } // Optional
 
+        [Required]
         public string City { get; set; }
 
+        [Required]
         public string StateOrProvince { get; set; }
-        
+
+        [Required]
         public string ZIPorPostal{ get; set; }
 
+        [Required]
         public string Country { get; set; }
-        
+
+        [Required]
         public string UserName { get; set; }
 
+        [Required]
         public string Password { get; set; }
 
+        [Required]
         public string PrimaryEmail { get; set; }
-     
+
+        [Required]
         public string PrimaryPhoneNumber { get; set; }
 
+        [Required]
         public string PrimaryPhoneType { get; set; }
 
         public string SecondaryEmail { get; set; }
@@ -55,8 +63,6 @@ namespace LotusTransformation.Models
         public string SecondaryPhoneNumber { get; set; }
 
         public string SecondaryPhoneType { get; set; }
-
-        public virtual LogIn LogIn { get; set; }
 
     }
 }

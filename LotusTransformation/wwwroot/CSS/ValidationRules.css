@@ -1,14 +1,13 @@
 ﻿
 /*Validation CSS Rules ONLY*/
  .field-validation-error{
-    color: fuchsia;
-    font-weight: bold;
+    color: darkred;
+    font: .5rem;
+    display:block;
 }
 
  .input-validation-error{
-     border: 1px solid #f00; 
-     background-color: #fee;
-
+    border: 2px solid red;
  }
 
  .validation-summary-errors{

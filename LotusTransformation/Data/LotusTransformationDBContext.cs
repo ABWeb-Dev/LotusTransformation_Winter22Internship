@@ -18,17 +18,5 @@ namespace LotusTransformation.Data
 
         public DbSet<UserInformation> UserInformation { get; set; }
 
-        public DbSet<LogIn> LogIns { get; set; }    
-       
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<UserInformation>().ToTable("UserInformation");
-            modelBuilder.Entity<LogIn>().ToTable("LogIn");
-
-            modelBuilder.Entity<UserInformation>()
-                .HasOne<LogIn>(s => s.LogIn)
-                .WithOne(ul => ul.UserInformation)
-                .HasForeignKey<LogIn>(ul => ul.UserID);
-        }
     }
 }

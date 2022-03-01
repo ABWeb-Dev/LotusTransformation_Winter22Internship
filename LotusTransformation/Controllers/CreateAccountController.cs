@@ -55,21 +55,12 @@ namespace LotusTransformation.Controllers
                     Address2 = NewUser.Address2,
                 };
 
-                LogIn logIn = new LogIn()
-                {
-                    UserName = NewUser.UserName,
-                    Password = NewUser.Password,
-                    Email = NewUser.PrimaryEmail,
-                    
-                };
-
 
                // if (_existingUser.Account.Select(A => A.PrimaryEmail).Contains(NewUser.PrimaryEmail)) return View();// TODO: Make Email Already Exists View
                 // if (_existingUser.Account.Select(A => A.SecondaryEmail).Contains(NewUser.SecondaryEmail)) return View(); //TODO: Make Backup email Already In use View
                 // if (_existingUser.Account.Select(A => A.UserName).Contains(NewUser.UserName)) return View(); // TODO: Make UserName Already in Use View
 
                 _efac.Add(user);
-                _efac.Add(logIn);
                 _efac.SaveChanges();
 
                 return View("CreationSuccess");

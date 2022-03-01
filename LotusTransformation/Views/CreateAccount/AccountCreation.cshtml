@@ -23,95 +23,103 @@
 
         <fieldset>
 
-            <form asp-controller="CreateAccount" asp-antiforgery="true" asp-action="AccountCreation" method="post">
+            <form class="ACFForm" asp-controller="CreateAccount" asp-antiforgery="true" asp-action="AccountCreation" method="post">
+               
+                
+                    <div class="ACFFirstName formgroup">
+                        <label class="ACFLabels" asp-for="FirstName">First Name:</label>
+                        <input type="text" asp-for="FirstName" />
+                        <span asp-validation-for="FirstName"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="FirstName">First Name:</label>
-                    <input type="text" asp-for="FirstName" />
-                    <span asp-validation-for="FirstName"></span>
-                </div>
+                    <div class="ACFMiddleInitial formgroup">
+                        <label class="ACFLabels" asp-for="MiddleInitial">Middle Initial:</label>
+                        <input type="text" size="1" asp-for="MiddleInitial" />
+                        <span asp-validation-for="MiddleInitial"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="LastName">Last Name:</label>
-                    <input type="text" asp-for="LastName" />
-                    <span asp-validation-for="LastName"></span>
-                </div>
+                    <div class="ACFLastName formgroup">
+                        <label class="ACFLabels" asp-for="LastName">Last Name:</label>
+                        <input type="text" asp-for="LastName" />
+                        <span asp-validation-for="LastName"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="PrimaryEmail">Email</label>
-                    <input type="email" asp-for="PrimaryEmail" />
-                    <span asp-validation-for="PrimaryEmail"></span>
-                </div>
+                    <div class="ACFEmail formgroup">
+                        <label class="ACFLabels" asp-for="PrimaryEmail">Email</label>
+                        <input type="email" asp-for="PrimaryEmail" />
+                        <span asp-validation-for="PrimaryEmail"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="PrimaryPhoneNumber">Phone Number</label>
-                    <input type="tel" asp-for="PrimaryPhoneNumber" />
-                    <span asp-validation-for="PrimaryPhoneNumber"></span>
-                </div>
+                    <div class="formgroup">
+                        <label class="ACFLabels" asp-for="PrimaryPhoneNumber">Phone Number</label>
+                        <input type="tel" asp-for="PrimaryPhoneNumber" />
+                        <span asp-validation-for="PrimaryPhoneNumber"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="PrimaryPhoneType">Phone Type</label>
-                    <select type="text" asp-for="PrimaryPhoneType">
-                        <option>Home</option>
-                        <option>Mobile</option>
-                        <option>Business</option>
-                        <option>Other</option>
-                    </select>
-                </div>
+                    <div class="formgroup">
+                        <label class="ACFLabels" asp-for="PrimaryPhoneType">Phone Type</label>
+                        <select type="text" asp-for="PrimaryPhoneType">
+                            <option>Home</option>
+                            <option>Mobile</option>
+                            <option>Business</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="Address1">Street Address</label>
-                    <input type="text" asp-for="Address1" />
-                    <span asp-validation-for="Address1"></span>
-                </div>
+                    <div class="formgroup">
+                        <label class="ACFLabels" asp-for="Address1">Street Address</label>
+                        <input type="text" asp-for="Address1" />
+                        <span asp-validation-for="Address1"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="Address2">Street Address Coniunued/Apartment Number (Optional)</label>
-                    <input type="text" asp-for="Address2" />
-                    <span asp-validation-for="Address2"></span>
-                </div>
+                    <div class="formgroup">
+                        <label class="ACFLabels" asp-for="Address2">Street Address Coniunued/Apartment Number (Optional)</label>
+                        <input type="text" asp-for="Address2" />
+                        <span asp-validation-for="Address2"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="City">City</label>
-                    <input type="text" asp-for="City" />
-                    <span asp-validation-for="City"></span>
-                </div>
+                    <div class="formgroup">
+                        <label class="ACFLabels" asp-for="City">City</label>
+                        <input type="text" asp-for="City" />
+                        <span asp-validation-for="City"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="StateOrProvince">State or Province</label>
-                    <input type="text" asp-for="StateOrProvince" />
-                    <span asp-validation-for="StateOrProvince"></span>
-                </div>
+                    <div class="formgroup">
+                        <label class="ACFLabels" asp-for="StateOrProvince">State or Province</label>
+                        <input type="text" asp-for="StateOrProvince" />
+                        <span asp-validation-for="StateOrProvince"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="ZIPorPostal">Zip or Postal Code</label>
-                    <input type="text" asp-for="ZIPorPostal"/>
-                    <span asp-validation-for="ZIPorPostal"></span>
-                </div>
+                    <div class="formgroup">
+                        <label class="ACFLabels" asp-for="ZIPorPostal">Zip or Postal Code</label>
+                        <input type="text" asp-for="ZIPorPostal"/>
+                        <span asp-validation-for="ZIPorPostal"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="Country">Country</label>
-                    <input type="text" asp-for="Country" />
-                    <span asp-validation-for="Country"></span>
-                </div>
+                    <div class="formgroup">
+                        <label class="ACFLabels" asp-for="Country">Country</label>
+                        <input type="text" asp-for="Country" />
+                        <span asp-validation-for="Country"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="UserName">Please create a username.</label>
-                    <input type="text" asp-for="UserName" />
-                    <span asp-validation-for="UserName"></span>
-                </div>
+                    <div class="formgroup">
+                        <label class="ACFLabels" asp-for="UserName">Please create a username.</label>
+                        <input type="text" asp-for="UserName" />
+                        <span asp-validation-for="UserName"></span>
+                    </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="Password">Please create a password</label>
-                    <input type="password" asp-for="Password" />
-                    <span asp-validation-for="Password"></span>
-                </div>
+                    <div class="formgroup">
+                        <label class="ACFLabels" asp-for="Password">Please create a password</label>
+                        <input type="password" asp-for="Password" />
+                        <span asp-validation-for="Password"></span>
+                    </div>
 
-                <div>
-                    <button type="submit" asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</button>
-                    <button type="reset" asp-controller="CreateAccount" asp-action="AccountCreation">Clear Form</button>
-                </div>
-            </form>
+                    <div>
+                        <button type="submit" asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</button>
+                        <button type="reset" asp-controller="CreateAccount" asp-action="AccountCreation">Clear Form</button>
+                    </div>
+
+              </form>
         </fieldset>
     </main>
 </body>
