@@ -5,17 +5,18 @@ using LotusTransformation.Data;
 using LotusTransformation.Models;
 using LotusTransformation.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace LotusTransformation.Controllers
 {
     public class CreateAccountController : Controller
     {
         
-        private readonly LotusTransformationDBContext _efac;
+        private readonly LotusTransformationDBContext _dbContext;
 
         public CreateAccountController(LotusTransformationDBContext Acc)
         {
-            _efac = Acc;
+            _dbContext = Acc;
         }
 
         [HttpGet][RequireHttps]
@@ -27,7 +28,7 @@ namespace LotusTransformation.Controllers
         [HttpPost][RequireHttps]
         public IActionResult AccountCreation(ClientSignUpVM NewUser)
         {
-
+            
 
             if (ModelState.IsValid)
             {
@@ -38,19 +39,47 @@ namespace LotusTransformation.Controllers
                     LastName = NewUser.LastName,
                     UserName = NewUser.UserName,
                     Password = NewUser.Password,
-                };
+                    Contact = new ClientContactInformation()
+                    {
+                        Address1 = NewUser.Address1,
+                        Address2 = NewUser.Address2,
+                        City = NewUser.City,
+                        StateOrProvince = NewUser.StateOrProvince,
+                        Country = NewUser.Country,
+                        ZIPorPostal = NewUser.ZIPorPostal,
+                        Email = NewUser.Email,
+                        PhoneNumber = NewUser.PhoneNumber,
+                        PhoneType = NewUser.PhoneType,             
+                    },
 
+                    Employment = new ClientWorkInformation()
+                    {
+                        Occupation = NewUser.Occupation,
+                        Company = NewUser.Company,
+                        CompanyStreetAddress = NewUser.CompanyStreetAddress,
+                        CompanyCity = NewUser.CompanyCity,
+                        CompanyState = NewUser.CompanyState,
+                        CompanyPostal = NewUser.CompanyPostal,
+                        WorkEmail = NewUser.WorkEmail,
 
-               // if (_existingUser.Account.Select(A => A.PrimaryEmail).Contains(NewUser.PrimaryEmail)) return View();// TODO: Make Email Already Exists View
-                // if (_existingUser.Account.Select(A => A.SecondaryEmail).Contains(NewUser.SecondaryEmail)) return View(); //TODO: Make Backup email Already In use View
-                // if (_existingUser.Account.Select(A => A.UserName).Contains(NewUser.UserName)) return View(); // TODO: Make UserName Already in Use View
+                    },
+            };
+                _dbContext.Add(user);
+                _dbContext.SaveChanges();
 
-                _efac.Add(user);
-                _efac.SaveChanges();
+               
 
-                return View("CreationSuccess");
+                return RedirectToAction("FirstPreSession");
             }
+
             else return View();
+        }
+
+        [HttpGet]
+        public IActionResult FirstPreSession(long id)
+        {
+           
+            return View();
         }
     }
 }

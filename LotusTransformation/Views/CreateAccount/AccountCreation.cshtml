@@ -44,19 +44,13 @@
                         <span asp-validation-for="LastName"></span>
                     </div>
 
-                    <div class="ACFEmail formgroup">
-                        <label class="ACFLabels" asp-for="Email">Email</label>
-                        <input type="email" asp-for="Email" />
-                        <span asp-validation-for="Email"></span>
-                    </div>
-
-                    <div class="formgroup">
+                    <div class="formgroup ACFPhone">
                         <label class="ACFLabels" asp-for="PhoneNumber">Phone Number</label>
                         <input type="tel" asp-for="PhoneNumber" />
                         <span asp-validation-for="PhoneNumber"></span>
                     </div>
 
-                    <div class="formgroup">
+                    <div class="formgroup ACFPhoneType">
                         <label class="ACFLabels" asp-for="PhoneType">Phone Type</label>
                         <select type="text" asp-for="PhoneType">
                             <option>Home</option>
@@ -66,6 +60,12 @@
                         </select>
                     </div>
 
+                    <div class="ACFEmail formgroup">
+                        <label class="ACFLabels" asp-for="Email">Email</label>
+                        <input type="email" asp-for="Email" />
+                        <span asp-validation-for="Email"></span>
+                    </div>
+
                     <div class="formgroup">
                         <label class="ACFLabels" asp-for="Address1">Street Address</label>
                         <input type="text" asp-for="Address1" />
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="formgroup">
-                        <label class="ACFLabels" asp-for="Address2">Street Address Coniunued/Apartment Number (Optional)</label>
+                        <label class="ACFLabels" asp-for="Address2">Address (Continued)</label>
                         <input type="text" asp-for="Address2" />
                         <span asp-validation-for="Address2"></span>
                     </div>

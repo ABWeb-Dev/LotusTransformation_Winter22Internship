@@ -40,7 +40,7 @@ namespace LotusTransformation.Migrations
                 name: "ClientAccountInformation",
                 columns: table => new
                 {
-                    UserID = table.Column<int>(type: "int", nullable: false)
+                    ClientID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MiddleInitial = table.Column<string>(type: "nvarchar(1)", nullable: false),
@@ -52,7 +52,7 @@ namespace LotusTransformation.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientAccountInformation", x => x.UserID);
+                    table.PrimaryKey("PK_ClientAccountInformation", x => x.ClientID);
                 });
 
             migrationBuilder.CreateTable(
@@ -79,7 +79,7 @@ namespace LotusTransformation.Migrations
                         name: "FK_ClientContactInformation_ClientAccountInformation_ClientID",
                         column: x => x.ClientID,
                         principalTable: "ClientAccountInformation",
-                        principalColumn: "UserID");
+                        principalColumn: "ClientID");
                 });
 
             migrationBuilder.CreateTable(
@@ -88,16 +88,16 @@ namespace LotusTransformation.Migrations
                 {
                     Key = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientAccountInformationUserID = table.Column<int>(type: "int", nullable: true)
+                    ClientAccountInformationClientID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ClientDocuments", x => x.Key);
                     table.ForeignKey(
-                        name: "FK_ClientDocuments_ClientAccountInformation_ClientAccountInformationUserID",
-                        column: x => x.ClientAccountInformationUserID,
+                        name: "FK_ClientDocuments_ClientAccountInformation_ClientAccountInformationClientID",
+                        column: x => x.ClientAccountInformationClientID,
                         principalTable: "ClientAccountInformation",
-                        principalColumn: "UserID");
+                        principalColumn: "ClientID");
                 });
 
             migrationBuilder.CreateTable(
@@ -112,16 +112,16 @@ namespace LotusTransformation.Migrations
                     QuestionFour = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     QuestionFive = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     QuestionSix = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClientAccountInformationUserID = table.Column<int>(type: "int", nullable: true)
+                    ClientAccountInformationClientID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ClientPostSessionResponses", x => x.Key);
                     table.ForeignKey(
-                        name: "FK_ClientPostSessionResponses_ClientAccountInformation_ClientAccountInformationUserID",
-                        column: x => x.ClientAccountInformationUserID,
+                        name: "FK_ClientPostSessionResponses_ClientAccountInformation_ClientAccountInformationClientID",
+                        column: x => x.ClientAccountInformationClientID,
                         principalTable: "ClientAccountInformation",
-                        principalColumn: "UserID");
+                        principalColumn: "ClientID");
                 });
 
             migrationBuilder.CreateTable(
@@ -137,16 +137,16 @@ namespace LotusTransformation.Migrations
                     QuestionFive = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QuestionSix = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QuestionSeven = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ClientAccountInformationUserID = table.Column<int>(type: "int", nullable: true)
+                    ClientAccountInformationClientID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ClientPreSessionResponses", x => x.Key);
                     table.ForeignKey(
-                        name: "FK_ClientPreSessionResponses_ClientAccountInformation_ClientAccountInformationUserID",
-                        column: x => x.ClientAccountInformationUserID,
+                        name: "FK_ClientPreSessionResponses_ClientAccountInformation_ClientAccountInformationClientID",
+                        column: x => x.ClientAccountInformationClientID,
                         principalTable: "ClientAccountInformation",
-                        principalColumn: "UserID");
+                        principalColumn: "ClientID");
                 });
 
             migrationBuilder.CreateTable(
@@ -171,7 +171,7 @@ namespace LotusTransformation.Migrations
                         name: "FK_ClientWorkInformation_ClientAccountInformation_ClientID",
                         column: x => x.ClientID,
                         principalTable: "ClientAccountInformation",
-                        principalColumn: "UserID");
+                        principalColumn: "ClientID");
                 });
 
             migrationBuilder.CreateIndex(
@@ -190,19 +190,19 @@ namespace LotusTransformation.Migrations
                 column: "ClientID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientDocuments_ClientAccountInformationUserID",
+                name: "IX_ClientDocuments_ClientAccountInformationClientID",
                 table: "ClientDocuments",
-                column: "ClientAccountInformationUserID");
+                column: "ClientAccountInformationClientID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientPostSessionResponses_ClientAccountInformationUserID",
+                name: "IX_ClientPostSessionResponses_ClientAccountInformationClientID",
                 table: "ClientPostSessionResponses",
-                column: "ClientAccountInformationUserID");
+                column: "ClientAccountInformationClientID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientPreSessionResponses_ClientAccountInformationUserID",
+                name: "IX_ClientPreSessionResponses_ClientAccountInformationClientID",
                 table: "ClientPreSessionResponses",
-                column: "ClientAccountInformationUserID");
+                column: "ClientAccountInformationClientID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClientWorkInformation_ClientID",

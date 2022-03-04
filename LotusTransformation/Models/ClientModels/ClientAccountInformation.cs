@@ -14,7 +14,7 @@ namespace LotusTransformation.Models
 
         [Required]
         [Key]
-        public int UserID { get; set; }
+        public int ClientID { get; set; }
 
         [Required]
         public string FirstName { get; set; }
@@ -32,6 +32,7 @@ namespace LotusTransformation.Models
 
         [ForeignKey("ContactID")]
         public ClientContactInformation Contact { get; set; }
+
         [ForeignKey("EmploymentID")]
         public ClientWorkInformation Employment { get; set; }
 

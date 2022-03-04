@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LotusTransformation.Migrations
 {
     [DbContext(typeof(LotusTransformationDBContext))]
-    [Migration("20220301201053_Initial")]
+    [Migration("20220303193813_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,11 +68,11 @@ namespace LotusTransformation.Migrations
 
             modelBuilder.Entity("LotusTransformation.Models.ClientAccountInformation", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<int>("ClientID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientID"), 1L, 1);
 
                     b.Property<int?>("ContactID")
                         .HasColumnType("int");
@@ -100,7 +100,7 @@ namespace LotusTransformation.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserID");
+                    b.HasKey("ClientID");
 
                     b.HasIndex("ContactID");
 
@@ -170,12 +170,12 @@ namespace LotusTransformation.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Key"), 1L, 1);
 
-                    b.Property<int?>("ClientAccountInformationUserID")
+                    b.Property<int?>("ClientAccountInformationClientID")
                         .HasColumnType("int");
 
                     b.HasKey("Key");
 
-                    b.HasIndex("ClientAccountInformationUserID");
+                    b.HasIndex("ClientAccountInformationClientID");
 
                     b.ToTable("ClientDocuments");
                 });
@@ -188,7 +188,7 @@ namespace LotusTransformation.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Key"), 1L, 1);
 
-                    b.Property<int?>("ClientAccountInformationUserID")
+                    b.Property<int?>("ClientAccountInformationClientID")
                         .HasColumnType("int");
 
                     b.Property<string>("QuestionFive")
@@ -211,7 +211,7 @@ namespace LotusTransformation.Migrations
 
                     b.HasKey("Key");
 
-                    b.HasIndex("ClientAccountInformationUserID");
+                    b.HasIndex("ClientAccountInformationClientID");
 
                     b.ToTable("ClientPostSessionResponses");
                 });
@@ -224,7 +224,7 @@ namespace LotusTransformation.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Key"), 1L, 1);
 
-                    b.Property<int?>("ClientAccountInformationUserID")
+                    b.Property<int?>("ClientAccountInformationClientID")
                         .HasColumnType("int");
 
                     b.Property<string>("QuestionFive")
@@ -257,7 +257,7 @@ namespace LotusTransformation.Migrations
 
                     b.HasKey("Key");
 
-                    b.HasIndex("ClientAccountInformationUserID");
+                    b.HasIndex("ClientAccountInformationClientID");
 
                     b.ToTable("ClientPreSessionResponses");
                 });
@@ -329,14 +329,14 @@ namespace LotusTransformation.Migrations
                 {
                     b.HasOne("LotusTransformation.Models.ClientAccountInformation", null)
                         .WithMany("ClientDocuments")
-                        .HasForeignKey("ClientAccountInformationUserID");
+                        .HasForeignKey("ClientAccountInformationClientID");
                 });
 
             modelBuilder.Entity("LotusTransformation.Models.ClientModels.ClientPostSessionResponses", b =>
                 {
                     b.HasOne("LotusTransformation.Models.ClientAccountInformation", "ClientAccountInformation")
                         .WithMany("ClientPostSessionResponses")
-                        .HasForeignKey("ClientAccountInformationUserID");
+                        .HasForeignKey("ClientAccountInformationClientID");
 
                     b.Navigation("ClientAccountInformation");
                 });
@@ -345,7 +345,7 @@ namespace LotusTransformation.Migrations
                 {
                     b.HasOne("LotusTransformation.Models.ClientAccountInformation", null)
                         .WithMany("ClientPreSessionResponses")
-                        .HasForeignKey("ClientAccountInformationUserID");
+                        .HasForeignKey("ClientAccountInformationClientID");
                 });
 
             modelBuilder.Entity("LotusTransformation.Models.ClientWorkInformation", b =>

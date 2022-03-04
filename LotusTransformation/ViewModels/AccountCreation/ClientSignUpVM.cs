@@ -1,22 +1,20 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-
-
-
-
 namespace LotusTransformation.ViewModels 
 
 {
     public class ClientSignUpVM 
     {
-
         
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your first name")]
         [RegularExpression("^((?!^FirstName$)[a-zA-Z '])+$", ErrorMessage = "Please only use letters in your name")]
         [MinLength(2)]
         [MaxLength(25)]
         public string FirstName { get; set; }
+
+       
+        public char MiddleInitial { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your last name")]
         [RegularExpression("^((?!^LastName$)[a-zA-Z '])+$", ErrorMessage = "Please only use letters in your name")]
@@ -27,13 +25,14 @@ namespace LotusTransformation.ViewModels
         [Required(AllowEmptyStrings = false, ErrorMessage = "A valid mailing address is required")]
         public string Address1 { get; set; }
 
+        public string Address2 { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "A valid City is required")]
         public string City { get; set; }
 
         [RegularExpression("^((?!^StateOrProvince$)[a-zA-Z '])+$", ErrorMessage = "Please only use letters in your name")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "A valid State, Province or Region is required")]
         public string StateOrProvince { get; set; }
-
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your ZIP or Postal Code")]
         [MinLength(2)]
@@ -62,15 +61,30 @@ namespace LotusTransformation.ViewModels
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please select phone type")]
         public string PhoneType { get; set; }
 
-        // Optional user information, not required
-        /// <summary>
-        /// Below Fields are optional. They should still have the same Regex restrictions as the above form fields to prevent SQL Injects XSS attacks
-        /// </summary>
-        public DateTime DateOfBirth { get; set; }
+        [Required]
+        public string Occupation { get; set; }
 
-        public char MiddleInitial { get; set; }
+        [Required]
+        public string Company { get; set; }
 
-        public string Address2 { get; set; }
+        [Required]
+        public string CompanyStreetAddress { get; set; }
+
+        [Required]
+        public string CompanyCity { get; set; }
+
+        [Required]
+        public string CompanyState { get; set; }
+
+        [Required]
+        public string CompanyPostal { get; set; }
+
+        [Required]
+        public string WorkEmail { get; set; }
+
+
+
+
     }
 }
 
