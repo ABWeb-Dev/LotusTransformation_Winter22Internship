@@ -13,7 +13,9 @@ namespace LotusTransformation.Models
 
         public string Company { get; set; }
 
-        public string CompanyStreetAddress { get; set; }
+        public string CompanyStreetAddress1 { get; set; }
+
+        public string CompanyStreetAddress2 { get; set; }
 
         public string CompanyCity { get; set; }
 
@@ -23,7 +25,9 @@ namespace LotusTransformation.Models
 
         public string WorkEmail { get; set; }
 
-        [ForeignKey("ClientID")]
-        public ClientAccountInformation ClientAccountInformation { get; set; }
+        public string CompnayCountry { get; set; }
+
+        [ForeignKey("EmploymentID")]
+        public ClientAccountInformation Client { get; set; }
     }
 }

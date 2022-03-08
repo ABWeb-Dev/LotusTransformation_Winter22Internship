@@ -34,7 +34,7 @@ namespace LotusTransformation.Models
         [Required]
         public string Country { get; set; }
 
-        [ForeignKey("ClientID")]
-        public ClientAccountInformation ClientAccountInformation { get; set; }
+        [ForeignKey("ContactID")]
+        public ClientAccountInformation Client { get; set; }
     }
 }

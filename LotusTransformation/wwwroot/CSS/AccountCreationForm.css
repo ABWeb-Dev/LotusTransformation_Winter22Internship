@@ -1,49 +1,173 @@
-﻿/*TODO: Redesign form with Grid Layout, no comma between values: I.E. grid-template-columns: 5% 15% 25% 25% 5% 25%;*/
-
-.ACFForm{
+﻿/*TODO: Scalability/Resizing*** aside from that, spacing incorporate more negative space as evenly as possible. */
+main{
+    height:125rem;
+}
+.ACFForm {
     border: solid 5px black;
     display: grid;
-    column-gap: 1rem;
-    row-gap: 1rem;
-    grid-template-columns: 20% 20% 20% 20% 20%;
-    padding: .4vw;
-
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 7.7% 7.7% 7.7% 7.7% 7.7% 7.7% 7.7% 7.7% 7.7% 7.7% 7.7% 7.7% 7.7%;
+    font-size: 1.75rem;
+    height: 110rem;
 }
 
+.ACFForm > div > input {
+    width: 15rem;
+}
+
+.ACFForm .ACFMiddleInitial > input {
+    width: 3rem;
+}
+
+
+.ACFForm > div{
+    margin: 1rem;
+}
+
+
 /*Grid Items*/
-.ACFFirstName{
-    grid-column: 1 / span 2;
-    grid-row: 1;
+.ACFDisclaimer1{
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 2;
+    max-width: 90%;
+}
+.ACFFirstName {
+    padding-top: 5%;
+    grid-row: 2;
+    grid-column: 1;
     position: relative;
 }
 
 .ACFMiddleInitial {
-    grid-row: 1;
+    padding-top: 5%;
+    grid-row: 2;
     grid-column: 2;
     position: relative;
 }
 
-.ACFLastName{
-    grid-row: 1;
+.ACFLastName {
+    padding-top: 5%;
+    grid-row: 2;
     grid-column: 3;
     position: relative;
 }
 
 .ACFPhone{
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 1; 
 }
 
 .ACFPhoneType{
-    grid-row: 2; 
+    grid-row: 3; 
     grid-column: 2;
 }
 
 .ACFEmail{
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 3;
 }
 
-.ACFLabels{
-    display:block;
+.ACFAddress1{
+    grid-row: 4;
+    grid-column: 1;
+    
+}
+
+.ACFAddress2 {
+    grid-row: 4;
+    grid-column: 2;
+    display: inline;
+    width: max-content;
+}
+
+
+.ACFCity{
+    grid-row:4;
+    grid-column:3;
+}
+
+.ACFState{
+    grid-row:5;
+    grid-column:1;
+}
+
+.ACFZip{
+    grid-row:5;
+    grid-column:2;
+}
+
+.ACFCountry{
+    grid-row:5;
+    grid-column:3;
+}
+
+.ACFJob{
+    grid-row:7;
+    grid-column:1;
+}
+
+.ACFEmployer{
+    grid-row:7;
+    grid-column:2;
+}
+
+.ACFWorkEmail {
+    grid-row: 7;
+    grid-column: 3;
+}
+
+.ACFBusinessAddress1{
+    grid-row: 8;
+    grid-column: 1;
+}
+
+.ACFBusinessAddress2 {
+    grid-row: 8;
+    grid-column: 2;
+}
+
+.ACFBusinessCity {
+    grid-row: 8;
+    grid-column: 3;
+}
+
+.ACFBusinessState {
+    grid-row: 9;
+    grid-column: 1;
+}
+
+.ACFBusinessPostal {
+    grid-row: 9;
+    grid-column: 2;
+}
+.ACFBusinessCountry {
+    grid-row: 9;
+    grid-column: 3;
+}
+
+.ACFUserName{
+    grid-row:11;
+    grid-column: 2;
+}
+
+.ACFPassword{
+    grid-row: 11;
+    grid-column: 3;
+}
+
+.ACFVerifyPassword{
+    grid-row: 11;
+    grid-column: 4;
+}
+
+.ACFButtons{
+    grid-row: 12;
+    grid-column: 3 / span 4;
+}
+
+.ACFLabels {
+    display: block;
+}
+.formgroup{
+  
 }

@@ -1,4 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+// Initialize N/A Questions to "First Session" if they are first time clients
 
 namespace LotusTransformation.Models.ClientModels
 {
@@ -28,5 +31,8 @@ namespace LotusTransformation.Models.ClientModels
 
         [Required]
         public string QuestionSeven { get; set; }
+
+        [ForeignKey("ClientPreSession")]
+        public ClientAccountInformation Client { get; set; }
     }
 }

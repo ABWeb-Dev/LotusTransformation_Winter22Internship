@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using LotusTransformation.Data;
+﻿using LotusTransformation.Data;
 using LotusTransformation.Models;
 using LotusTransformation.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace LotusTransformation.Controllers
 {
     public class CreateAccountController : Controller
     {
-        
+
         private readonly LotusTransformationDBContext _dbContext;
 
         public CreateAccountController(LotusTransformationDBContext Acc)
@@ -19,18 +15,20 @@ namespace LotusTransformation.Controllers
             _dbContext = Acc;
         }
 
-        [HttpGet][RequireHttps]
+        [HttpGet]
+        [RequireHttps]
         public ActionResult AccountCreation()
         {
             return View();
         }
 
-        [HttpPost][RequireHttps]
+        [HttpPost]
+        [RequireHttps]
         public IActionResult AccountCreation(ClientSignUpVM NewUser)
         {
-            
 
-            if (ModelState.IsValid)
+
+            if (ModelState.IsValid && NewUser.Password.Equals(NewUser.ConfirmPassword))
             {
                 ClientAccountInformation user = new ClientAccountInformation()
                 {
@@ -38,7 +36,7 @@ namespace LotusTransformation.Controllers
                     MiddleInitial = NewUser.MiddleInitial,
                     LastName = NewUser.LastName,
                     UserName = NewUser.UserName,
-                    Password = NewUser.Password,
+                    Password = NewUser.Password, // Learn to SALT and Encypt Passwords & UserName 
                     Contact = new ClientContactInformation()
                     {
                         Address1 = NewUser.Address1,
@@ -47,27 +45,29 @@ namespace LotusTransformation.Controllers
                         StateOrProvince = NewUser.StateOrProvince,
                         Country = NewUser.Country,
                         ZIPorPostal = NewUser.ZIPorPostal,
-                        Email = NewUser.Email,
                         PhoneNumber = NewUser.PhoneNumber,
-                        PhoneType = NewUser.PhoneType,             
+                        PhoneType = NewUser.PhoneType,
+                        Email = NewUser.Email,
                     },
 
                     Employment = new ClientWorkInformation()
                     {
                         Occupation = NewUser.Occupation,
                         Company = NewUser.Company,
-                        CompanyStreetAddress = NewUser.CompanyStreetAddress,
+                        CompanyStreetAddress1 = NewUser.CompanyStreetAddress1,
+                        CompanyStreetAddress2 = NewUser.CompanyStreetAddress2,
                         CompanyCity = NewUser.CompanyCity,
                         CompanyState = NewUser.CompanyState,
                         CompanyPostal = NewUser.CompanyPostal,
+                        CompnayCountry = NewUser.CompanyCountry,
                         WorkEmail = NewUser.WorkEmail,
 
                     },
-            };
-                _dbContext.Add(user);
+                };
+                _dbContext.AddRange(user);
                 _dbContext.SaveChanges();
 
-               
+
 
                 return RedirectToAction("FirstPreSession");
             }
@@ -78,7 +78,7 @@ namespace LotusTransformation.Controllers
         [HttpGet]
         public IActionResult FirstPreSession(long id)
         {
-           
+
             return View();
         }
     }

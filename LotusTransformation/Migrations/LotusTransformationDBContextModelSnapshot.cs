@@ -72,12 +72,6 @@ namespace LotusTransformation.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientID"), 1L, 1);
 
-                    b.Property<int?>("ContactID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("EmploymentID")
-                        .HasColumnType("int");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -100,20 +94,13 @@ namespace LotusTransformation.Migrations
 
                     b.HasKey("ClientID");
 
-                    b.HasIndex("ContactID");
-
-                    b.HasIndex("EmploymentID");
-
                     b.ToTable("ClientAccountInformation");
                 });
 
             modelBuilder.Entity("LotusTransformation.Models.ClientContactInformation", b =>
                 {
                     b.Property<int>("ContactID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContactID"), 1L, 1);
 
                     b.Property<string>("Address1")
                         .IsRequired()
@@ -125,9 +112,6 @@ namespace LotusTransformation.Migrations
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ClientID")
-                        .HasColumnType("int");
 
                     b.Property<string>("Country")
                         .IsRequired()
@@ -155,8 +139,6 @@ namespace LotusTransformation.Migrations
 
                     b.HasKey("ContactID");
 
-                    b.HasIndex("ClientID");
-
                     b.ToTable("ClientContactInformation");
                 });
 
@@ -168,12 +150,12 @@ namespace LotusTransformation.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Key"), 1L, 1);
 
-                    b.Property<int?>("ClientAccountInformationClientID")
+                    b.Property<int?>("DocumentID")
                         .HasColumnType("int");
 
                     b.HasKey("Key");
 
-                    b.HasIndex("ClientAccountInformationClientID");
+                    b.HasIndex("DocumentID");
 
                     b.ToTable("ClientDocuments");
                 });
@@ -186,30 +168,36 @@ namespace LotusTransformation.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Key"), 1L, 1);
 
-                    b.Property<int?>("ClientAccountInformationClientID")
+                    b.Property<int?>("ClientPostSession")
                         .HasColumnType("int");
 
                     b.Property<string>("QuestionFive")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("QuestionFour")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("QuestionOne")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("QuestionSix")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("QuestionThree")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("QuestionTwo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Key");
 
-                    b.HasIndex("ClientAccountInformationClientID");
+                    b.HasIndex("ClientPostSession");
 
                     b.ToTable("ClientPostSessionResponses");
                 });
@@ -222,7 +210,7 @@ namespace LotusTransformation.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Key"), 1L, 1);
 
-                    b.Property<int?>("ClientAccountInformationClientID")
+                    b.Property<int?>("ClientPreSession")
                         .HasColumnType("int");
 
                     b.Property<string>("QuestionFive")
@@ -255,7 +243,7 @@ namespace LotusTransformation.Migrations
 
                     b.HasKey("Key");
 
-                    b.HasIndex("ClientAccountInformationClientID");
+                    b.HasIndex("ClientPreSession");
 
                     b.ToTable("ClientPreSessionResponses");
                 });
@@ -267,9 +255,6 @@ namespace LotusTransformation.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Key"), 1L, 1);
-
-                    b.Property<int?>("ClientID")
-                        .HasColumnType("int");
 
                     b.Property<string>("Company")
                         .HasColumnType("nvarchar(max)");
@@ -283,8 +268,17 @@ namespace LotusTransformation.Migrations
                     b.Property<string>("CompanyState")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CompanyStreetAddress")
+                    b.Property<string>("CompanyStreetAddress1")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyStreetAddress2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompnayCountry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EmploymentID")
+                        .HasColumnType("int");
 
                     b.Property<string>("Occupation")
                         .HasColumnType("nvarchar(max)");
@@ -294,74 +288,71 @@ namespace LotusTransformation.Migrations
 
                     b.HasKey("Key");
 
-                    b.HasIndex("ClientID");
+                    b.HasIndex("EmploymentID")
+                        .IsUnique()
+                        .HasFilter("[EmploymentID] IS NOT NULL");
 
                     b.ToTable("ClientWorkInformation");
                 });
 
-            modelBuilder.Entity("LotusTransformation.Models.ClientAccountInformation", b =>
-                {
-                    b.HasOne("LotusTransformation.Models.ClientContactInformation", "Contact")
-                        .WithMany()
-                        .HasForeignKey("ContactID");
-
-                    b.HasOne("LotusTransformation.Models.ClientWorkInformation", "Employment")
-                        .WithMany()
-                        .HasForeignKey("EmploymentID");
-
-                    b.Navigation("Contact");
-
-                    b.Navigation("Employment");
-                });
-
             modelBuilder.Entity("LotusTransformation.Models.ClientContactInformation", b =>
                 {
-                    b.HasOne("LotusTransformation.Models.ClientAccountInformation", "ClientAccountInformation")
-                        .WithMany()
-                        .HasForeignKey("ClientID");
+                    b.HasOne("LotusTransformation.Models.ClientAccountInformation", "Client")
+                        .WithOne("Contact")
+                        .HasForeignKey("LotusTransformation.Models.ClientContactInformation", "ContactID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("ClientAccountInformation");
+                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("LotusTransformation.Models.ClientDocuments", b =>
                 {
-                    b.HasOne("LotusTransformation.Models.ClientAccountInformation", null)
-                        .WithMany("ClientDocuments")
-                        .HasForeignKey("ClientAccountInformationClientID");
+                    b.HasOne("LotusTransformation.Models.ClientAccountInformation", "Client")
+                        .WithMany("Documents")
+                        .HasForeignKey("DocumentID");
+
+                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("LotusTransformation.Models.ClientModels.ClientPostSessionResponses", b =>
                 {
-                    b.HasOne("LotusTransformation.Models.ClientAccountInformation", "ClientAccountInformation")
-                        .WithMany("ClientPostSessionResponses")
-                        .HasForeignKey("ClientAccountInformationClientID");
+                    b.HasOne("LotusTransformation.Models.ClientAccountInformation", "Client")
+                        .WithMany("PostSessionResponses")
+                        .HasForeignKey("ClientPostSession");
 
-                    b.Navigation("ClientAccountInformation");
+                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("LotusTransformation.Models.ClientModels.ClientPreSessionResponses", b =>
                 {
-                    b.HasOne("LotusTransformation.Models.ClientAccountInformation", null)
-                        .WithMany("ClientPreSessionResponses")
-                        .HasForeignKey("ClientAccountInformationClientID");
+                    b.HasOne("LotusTransformation.Models.ClientAccountInformation", "Client")
+                        .WithMany("PreSessionResponses")
+                        .HasForeignKey("ClientPreSession");
+
+                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("LotusTransformation.Models.ClientWorkInformation", b =>
                 {
-                    b.HasOne("LotusTransformation.Models.ClientAccountInformation", "ClientAccountInformation")
-                        .WithMany()
-                        .HasForeignKey("ClientID");
+                    b.HasOne("LotusTransformation.Models.ClientAccountInformation", "Client")
+                        .WithOne("Employment")
+                        .HasForeignKey("LotusTransformation.Models.ClientWorkInformation", "EmploymentID");
 
-                    b.Navigation("ClientAccountInformation");
+                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("LotusTransformation.Models.ClientAccountInformation", b =>
                 {
-                    b.Navigation("ClientDocuments");
+                    b.Navigation("Contact");
 
-                    b.Navigation("ClientPostSessionResponses");
+                    b.Navigation("Documents");
 
-                    b.Navigation("ClientPreSessionResponses");
+                    b.Navigation("Employment");
+
+                    b.Navigation("PostSessionResponses");
+
+                    b.Navigation("PreSessionResponses");
                 });
 #pragma warning restore 612, 618
         }

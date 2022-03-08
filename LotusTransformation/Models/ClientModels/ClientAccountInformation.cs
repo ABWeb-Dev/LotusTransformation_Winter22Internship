@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace LotusTransformation.Models
 {
-   
+
     public class ClientAccountInformation
     {
 
@@ -30,18 +25,22 @@ namespace LotusTransformation.Models
         [Required]
         public string Password { get; set; }
 
-        [ForeignKey("ContactID")]
+
+
         public ClientContactInformation Contact { get; set; }
 
-        [ForeignKey("EmploymentID")]
+
         public ClientWorkInformation Employment { get; set; }
 
-        public ICollection<ClientDocuments> ClientDocuments { get; set; }  
 
-        public ICollection<ClientModels.ClientPreSessionResponses> ClientPreSessionResponses { get; set; }
+        public ICollection<ClientDocuments> Documents { get; set; }
 
-        public ICollection<ClientModels.ClientPostSessionResponses> ClientPostSessionResponses { get; set; }
 
-        
+        [Required]
+        public ICollection<ClientModels.ClientPreSessionResponses> PreSessionResponses { get; set; }
+
+
+        [Required]
+        public ICollection<ClientModels.ClientPostSessionResponses> PostSessionResponses { get; set; }
     }
 }
