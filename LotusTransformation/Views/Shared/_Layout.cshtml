@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="~/CSS/SharedCustom.css" />  
+    <link rel="stylesheet" type="text/css" href="~/CSS/SharedCustom.css" />
     <link rel="stylesheet" type="text/css" href="~/CSS/Navigation-with-Button.css">
     <link rel="stylesheet" type="text/css" href="~/CSS/ValidationRules.css" />
     <link rel="stylesheet" type="text/css" href="~/CSS/AccountCreationForm.css"/>
@@ -21,17 +21,54 @@
 
 </head>
 
-<body class="Everything" id=" Everything">
+<body>
     <div class="bg-image body-div-size MainBody" id="MainBody">
+        
+    <nav class="navbar navbar-expand-lg navbar-light bggreen">
+        
+    
+    
+            <a class="navbar-brand" href="#">
+                
+                <img src="~/Images/Logo/R.png" width="120" height="125" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo1" aria-controls="navbarTogglerDemo1" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+                 <figure>
+                    
+  <blockquote class="blockquote">
+    <h1>Lotus Transformation</h1>
+  </blockquote>
+  <figcaption class="blockquote-footer fs-4">
+    Hollistic Health and Wellness Coaching
+  </figcaption>
+</figure>
+ <div class="collapse navbar-collapse show" id="navbarTogglerDemo1">
 
-        <header class="SiteHeader">
+<ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                        <li class="nav-item fs-4"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Home">Home</a></li>
+                        <li class="nav-item fs-4"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="About">About</a></li>
+                        <li class="nav-item fs-4"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Services">Services</a></li>
+                        <li class="nav-item fs-4"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Meditations">Meditations</a></li>
+                        <li class="nav-item fs-4"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Inspiration">Inspiration</a></li>
+                    </ul>
+                    <div class="btn-group">
+                        <a class="btn btn-success fs-6" style="color:var(--bs-gray-900);" asp-controller="SignIn" asp-action="SignIn">Log In</a>
+                        <a class="btn btn-success fs-6" role="button" style="color: var(--bs-gray-900);" asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</a>
+                    </div>
+                    </div>
 
-            <a asp-controller="LotusGeneral" asp-action="Home"><img src="~/Images/Logo/R.png" class="Logo"></a>
+               
 
-            <a class="heading-title" asp-controller="LotusGeneral" asp-action="Home">Lotus Transformation</a>
-            <a class="sub-heading-title" asp-controller="LotusGeneral" asp-action="Home">Hollistic Health and Wellness Coaching</a>
+                </nav>
+     <!-- <header class="SiteHeader"> -->
 
-        <nav class="NavbarExpand navbar navbar-expand-lg navigation-clean-button nav-menu-positioning">
+            <!--<a asp-controller="LotusGeneral" asp-action="Home"><img src="~/Images/Logo/R.png" class="Logo"></a>-->
+
+            <!-- <a class="heading-title" asp-controller="LotusGeneral" asp-action="Home">Lotus Transformation</a>
+            <a class="sub-heading-title" asp-controller="LotusGeneral" asp-action="Home">Hollistic Health and Wellness Coaching</a> -->
+
+        <!--<nav class="NavbarExpand navbar navbar-expand-lg navigation-clean-button nav-menu-positioning">
            
             
 
@@ -58,20 +95,17 @@
                     </span>
                 </div>
             </div>
-        </nav>
-        </header>
+        </nav>-->
+
 
         <div class="container py-5 my-5 h-auto" style="background-color:#FAEBD7; border-radius: 15px;">
              @RenderBody()
         </div>
 
-    <footer class="header-footer-color site-footer">
-        
-    </footer>
+    
 
     </div>
-
-
+   
     <script type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="~/lib/popper.js/cjs/popper.min.js"></script>
     <script type="text/javascript" src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
@@ -80,4 +114,9 @@
     <script type="text/javascript" src="~/lib/bootstrap.js"></script>
     <script type="text/javascript" src="~/Javascript/SiteResize.js"></script>
 </body>
+ <footer class="footer mt-auto py-3 bggreen">
+       <span class="text-muted">footer content here.</span>
+        
+    </footer>
+
 </html>
