@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace LotusTransformation.Models
 {
 
-    public class ClientAccountInformation
+    public class ClientAccountInformation : IdentityUser
     {
 
         [Required]
         [Key]
-        public int ClientID { get; set; }
+        public long ClientID { get; set; }
 
         [Required]
         public string FirstName { get; set; }
@@ -25,22 +26,14 @@ namespace LotusTransformation.Models
         [Required]
         public string Password { get; set; }
 
-
-
         public ClientContactInformation Contact { get; set; }
-
 
         public ClientWorkInformation Employment { get; set; }
 
-
         public ICollection<ClientDocuments> Documents { get; set; }
 
-
-        [Required]
         public ICollection<ClientModels.ClientPreSessionResponses> PreSessionResponses { get; set; }
 
-
-        [Required]
         public ICollection<ClientModels.ClientPostSessionResponses> PostSessionResponses { get; set; }
     }
 }

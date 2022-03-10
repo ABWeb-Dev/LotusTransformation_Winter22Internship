@@ -1,7 +1,5 @@
-﻿using System.Linq;
+﻿using LotusTransformation.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using LotusTransformation.Models;
 
 namespace LotusTransformation.Data
 {

@@ -91,9 +91,10 @@ namespace LotusTransformation.ViewModels
         [Required]
         public string WorkEmail { get; set; }
 
-
-
+        public bool PasswordMismatch { get; set; } = false;
 
     }
+
+
 }
 

@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace LotusTransformation.Migrations
 {
-    public partial class Test : Migration
+    public partial class Initial5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,13 +41,27 @@ namespace LotusTransformation.Migrations
                 name: "ClientAccountInformation",
                 columns: table => new
                 {
-                    ClientID = table.Column<int>(type: "int", nullable: false)
+                    ClientID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MiddleInitial = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,7 +72,8 @@ namespace LotusTransformation.Migrations
                 name: "ClientContactInformation",
                 columns: table => new
                 {
-                    ContactID = table.Column<int>(type: "int", nullable: false),
+                    ContactID = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneType = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -66,17 +82,17 @@ namespace LotusTransformation.Migrations
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StateOrProvince = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ZIPorPostal = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClientContactID = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ClientContactInformation", x => x.ContactID);
                     table.ForeignKey(
-                        name: "FK_ClientContactInformation_ClientAccountInformation_ContactID",
-                        column: x => x.ContactID,
+                        name: "FK_ClientContactInformation_ClientAccountInformation_ClientContactID",
+                        column: x => x.ClientContactID,
                         principalTable: "ClientAccountInformation",
-                        principalColumn: "ClientID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ClientID");
                 });
 
             migrationBuilder.CreateTable(
@@ -85,7 +101,7 @@ namespace LotusTransformation.Migrations
                 {
                     Key = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DocumentID = table.Column<int>(type: "int", nullable: true)
+                    DocumentID = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -101,7 +117,7 @@ namespace LotusTransformation.Migrations
                 name: "ClientPostSessionResponses",
                 columns: table => new
                 {
-                    Key = table.Column<int>(type: "int", nullable: false)
+                    Key = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     QuestionOne = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QuestionTwo = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -109,14 +125,14 @@ namespace LotusTransformation.Migrations
                     QuestionFour = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QuestionFive = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QuestionSix = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ClientPostSession = table.Column<int>(type: "int", nullable: true)
+                    PostSessionID = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ClientPostSessionResponses", x => x.Key);
                     table.ForeignKey(
-                        name: "FK_ClientPostSessionResponses_ClientAccountInformation_ClientPostSession",
-                        column: x => x.ClientPostSession,
+                        name: "FK_ClientPostSessionResponses_ClientAccountInformation_PostSessionID",
+                        column: x => x.PostSessionID,
                         principalTable: "ClientAccountInformation",
                         principalColumn: "ClientID");
                 });
@@ -125,7 +141,7 @@ namespace LotusTransformation.Migrations
                 name: "ClientPreSessionResponses",
                 columns: table => new
                 {
-                    Key = table.Column<int>(type: "int", nullable: false)
+                    Key = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     QuestionOne = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QuestionTwo = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -134,14 +150,14 @@ namespace LotusTransformation.Migrations
                     QuestionFive = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QuestionSix = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QuestionSeven = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ClientPreSession = table.Column<int>(type: "int", nullable: true)
+                    PreSessionID = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ClientPreSessionResponses", x => x.Key);
                     table.ForeignKey(
-                        name: "FK_ClientPreSessionResponses_ClientAccountInformation_ClientPreSession",
-                        column: x => x.ClientPreSession,
+                        name: "FK_ClientPreSessionResponses_ClientAccountInformation_PreSessionID",
+                        column: x => x.PreSessionID,
                         principalTable: "ClientAccountInformation",
                         principalColumn: "ClientID");
                 });
@@ -150,7 +166,7 @@ namespace LotusTransformation.Migrations
                 name: "ClientWorkInformation",
                 columns: table => new
                 {
-                    Key = table.Column<int>(type: "int", nullable: false)
+                    Key = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Occupation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Company = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -161,7 +177,7 @@ namespace LotusTransformation.Migrations
                     CompanyPostal = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WorkEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CompnayCountry = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmploymentID = table.Column<int>(type: "int", nullable: true)
+                    EmploymentID = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -174,19 +190,26 @@ namespace LotusTransformation.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_ClientContactInformation_ClientContactID",
+                table: "ClientContactInformation",
+                column: "ClientContactID",
+                unique: true,
+                filter: "[ClientContactID] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ClientDocuments_DocumentID",
                 table: "ClientDocuments",
                 column: "DocumentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientPostSessionResponses_ClientPostSession",
+                name: "IX_ClientPostSessionResponses_PostSessionID",
                 table: "ClientPostSessionResponses",
-                column: "ClientPostSession");
+                column: "PostSessionID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientPreSessionResponses_ClientPreSession",
+                name: "IX_ClientPreSessionResponses_PreSessionID",
                 table: "ClientPreSessionResponses",
-                column: "ClientPreSession");
+                column: "PreSessionID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClientWorkInformation_EmploymentID",

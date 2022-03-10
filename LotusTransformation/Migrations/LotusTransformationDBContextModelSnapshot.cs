@@ -17,7 +17,7 @@ namespace LotusTransformation.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.2")
+                .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -66,27 +66,69 @@ namespace LotusTransformation.Migrations
 
             modelBuilder.Entity("LotusTransformation.Models.ClientAccountInformation", b =>
                 {
-                    b.Property<int>("ClientID")
+                    b.Property<long>("ClientID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ClientID"), 1L, 1);
+
+                    b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientID"), 1L, 1);
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<string>("MiddleInitial")
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .IsRequired()
@@ -99,8 +141,11 @@ namespace LotusTransformation.Migrations
 
             modelBuilder.Entity("LotusTransformation.Models.ClientContactInformation", b =>
                 {
-                    b.Property<int>("ContactID")
-                        .HasColumnType("int");
+                    b.Property<long>("ContactID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ContactID"), 1L, 1);
 
                     b.Property<string>("Address1")
                         .IsRequired()
@@ -112,6 +157,9 @@ namespace LotusTransformation.Migrations
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("ClientContactID")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Country")
                         .IsRequired()
@@ -139,6 +187,10 @@ namespace LotusTransformation.Migrations
 
                     b.HasKey("ContactID");
 
+                    b.HasIndex("ClientContactID")
+                        .IsUnique()
+                        .HasFilter("[ClientContactID] IS NOT NULL");
+
                     b.ToTable("ClientContactInformation");
                 });
 
@@ -150,8 +202,8 @@ namespace LotusTransformation.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Key"), 1L, 1);
 
-                    b.Property<int?>("DocumentID")
-                        .HasColumnType("int");
+                    b.Property<long?>("DocumentID")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Key");
 
@@ -162,14 +214,14 @@ namespace LotusTransformation.Migrations
 
             modelBuilder.Entity("LotusTransformation.Models.ClientModels.ClientPostSessionResponses", b =>
                 {
-                    b.Property<int>("Key")
+                    b.Property<long>("Key")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Key"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Key"), 1L, 1);
 
-                    b.Property<int?>("ClientPostSession")
-                        .HasColumnType("int");
+                    b.Property<long?>("PostSessionID")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("QuestionFive")
                         .IsRequired()
@@ -197,21 +249,21 @@ namespace LotusTransformation.Migrations
 
                     b.HasKey("Key");
 
-                    b.HasIndex("ClientPostSession");
+                    b.HasIndex("PostSessionID");
 
                     b.ToTable("ClientPostSessionResponses");
                 });
 
             modelBuilder.Entity("LotusTransformation.Models.ClientModels.ClientPreSessionResponses", b =>
                 {
-                    b.Property<int>("Key")
+                    b.Property<long>("Key")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Key"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Key"), 1L, 1);
 
-                    b.Property<int?>("ClientPreSession")
-                        .HasColumnType("int");
+                    b.Property<long?>("PreSessionID")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("QuestionFive")
                         .IsRequired()
@@ -243,18 +295,18 @@ namespace LotusTransformation.Migrations
 
                     b.HasKey("Key");
 
-                    b.HasIndex("ClientPreSession");
+                    b.HasIndex("PreSessionID");
 
                     b.ToTable("ClientPreSessionResponses");
                 });
 
             modelBuilder.Entity("LotusTransformation.Models.ClientWorkInformation", b =>
                 {
-                    b.Property<int>("Key")
+                    b.Property<long>("Key")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Key"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Key"), 1L, 1);
 
                     b.Property<string>("Company")
                         .HasColumnType("nvarchar(max)");
@@ -277,8 +329,8 @@ namespace LotusTransformation.Migrations
                     b.Property<string>("CompnayCountry")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EmploymentID")
-                        .HasColumnType("int");
+                    b.Property<long?>("EmploymentID")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Occupation")
                         .HasColumnType("nvarchar(max)");
@@ -299,9 +351,7 @@ namespace LotusTransformation.Migrations
                 {
                     b.HasOne("LotusTransformation.Models.ClientAccountInformation", "Client")
                         .WithOne("Contact")
-                        .HasForeignKey("LotusTransformation.Models.ClientContactInformation", "ContactID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LotusTransformation.Models.ClientContactInformation", "ClientContactID");
 
                     b.Navigation("Client");
                 });
@@ -319,7 +369,7 @@ namespace LotusTransformation.Migrations
                 {
                     b.HasOne("LotusTransformation.Models.ClientAccountInformation", "Client")
                         .WithMany("PostSessionResponses")
-                        .HasForeignKey("ClientPostSession");
+                        .HasForeignKey("PostSessionID");
 
                     b.Navigation("Client");
                 });
@@ -328,7 +378,7 @@ namespace LotusTransformation.Migrations
                 {
                     b.HasOne("LotusTransformation.Models.ClientAccountInformation", "Client")
                         .WithMany("PreSessionResponses")
-                        .HasForeignKey("ClientPreSession");
+                        .HasForeignKey("PreSessionID");
 
                     b.Navigation("Client");
                 });

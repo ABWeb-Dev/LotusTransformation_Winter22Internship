@@ -1,6 +1,8 @@
 ﻿<!--TODO: Show template to Bethany, inquire about making the form paginated -->
 @model LotusTransformation.ViewModels.ClientSignUpVM;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using LotusTransformation.ViewModels;
+
 
 
 @{
@@ -9,6 +11,7 @@
 
 <body>
     <link href=~/CSS~/CSS/ValidationRules.css type="text/css" rel="stylesheet"/>
+    <link href=~/CSS/AccountCreationCSS/AccountCreationForm.css type="text/css" rel="stylesheet" />
     <main>
         <h1>Lotus Transformation: Account Creation Form</h1>
 
@@ -22,7 +25,7 @@
             <span asp-validation-summary="All">Please correct the following:</span>
         </div>
 
-            <form  asp-controller="CreateAccount" asp-antiforgery="true" asp-action="AccountCreation" method="post">
+            <form asp-controller="CreateAccount" id="ClientAccountCreationForm" asp-antiforgery="true" asp-action="AccountCreation" method="post">
                
                 <div class="ACFForm">
 
@@ -173,12 +176,19 @@
                             <input type="password" asp-for="Password" />
                             <span asp-validation-for="Password"></span>
                         </div>
-
-                        <div class="ACFVerifyPassword formgroup">
+                @{
+                    
+                    if (@ViewBag.NewUser?.PasswordMismatch??Equals(true))
+                    {
+                        <span>Passwords do not match, please try again.</span>
+                    }
+                }
+                         <div class="ACFVerifyPassword formgroup">
                             <label class="ACFLabels" asp-for="ConfirmPassword">Confirm Password:*</label>
                             <input type="password" asp-for="ConfirmPassword" />
                             <span asp-validation-for="ConfirmPassword"></span>
                         </div>
+
 
                         <div class="ACFButtons">
                             <button type="submit" asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</button>

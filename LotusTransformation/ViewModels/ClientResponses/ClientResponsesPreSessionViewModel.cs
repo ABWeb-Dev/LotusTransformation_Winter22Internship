@@ -5,24 +5,22 @@ namespace LotusTransformation.ViewModels.ClientResponses
     public class ClientResponsesPreSessionViewModel
     {
         [Required]
-        public string QuestionOne { get; set; }
+        public string PreSessionQuestionOne { get; set; }
 
         [Required]
-        public string QuestionTwo { get; set; }
+        public string PreSessionQuestionTwo { get; set; }
 
         [Required]
-        public string QuestionThree { get; set; }
+        public string PreSessionQuestionThree { get; set; }
 
         [Required]
-        public string QuestionFour { get; set; }
+        public string PreSessionQuestionFour { get; set; }
 
         [Required]
-        public string QuestionFive { get; set; }
+        public string PreSessionQuestionFive { get; set; }
 
         [Required]
-        public string QuestionSix { get; set; }
+        public string PreSessionQuestionSix { get; set; }
 
-        [Required]
-        public string QuestionSeven { get; set; }
     }
 }

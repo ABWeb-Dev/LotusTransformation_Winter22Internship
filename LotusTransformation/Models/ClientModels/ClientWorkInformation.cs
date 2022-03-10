@@ -7,7 +7,7 @@ namespace LotusTransformation.Models
     {
         [Required]
         [Key]
-        public int Key { get; set; }
+        public long Key { get; set; }
 
         public string Occupation { get; set; }
 

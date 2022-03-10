@@ -9,7 +9,7 @@ namespace LotusTransformation.Models.ClientModels
     {
         [Required]
         [Key]
-        public int Key { get; set; }
+        public long Key { get; set; }
 
         [Required]
         public string QuestionOne { get; set; }
@@ -32,7 +32,7 @@ namespace LotusTransformation.Models.ClientModels
         [Required]
         public string QuestionSeven { get; set; }
 
-        [ForeignKey("ClientPreSession")]
+        [ForeignKey("PreSessionID")]
         public ClientAccountInformation Client { get; set; }
     }
 }

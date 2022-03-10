@@ -2,6 +2,8 @@
 using LotusTransformation.Models;
 using LotusTransformation.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LotusTransformation.Controllers
 {
@@ -19,6 +21,8 @@ namespace LotusTransformation.Controllers
         [RequireHttps]
         public ActionResult AccountCreation()
         {
+            List<string> existingUserNames = _dbContext.ClientAccountInformation.Select(u => u.UserName).ToList();
+            ViewBag.existingUserNames = existingUserNames;
             return View();
         }
 
@@ -27,7 +31,7 @@ namespace LotusTransformation.Controllers
         public IActionResult AccountCreation(ClientSignUpVM NewUser)
         {
 
-
+            ViewBag.NewUser = NewUser;
             if (ModelState.IsValid && NewUser.Password.Equals(NewUser.ConfirmPassword))
             {
                 ClientAccountInformation user = new ClientAccountInformation()
@@ -36,7 +40,7 @@ namespace LotusTransformation.Controllers
                     MiddleInitial = NewUser.MiddleInitial,
                     LastName = NewUser.LastName,
                     UserName = NewUser.UserName,
-                    Password = NewUser.Password, // Learn to SALT and Encypt Passwords & UserName 
+                    Password = NewUser.Password, //TODO: Learn to SALT and Encypt Passwords & UserName 
                     Contact = new ClientContactInformation()
                     {
                         Address1 = NewUser.Address1,
@@ -64,15 +68,23 @@ namespace LotusTransformation.Controllers
 
                     },
                 };
+
                 _dbContext.AddRange(user);
                 _dbContext.SaveChanges();
-
-
 
                 return RedirectToAction("FirstPreSession");
             }
 
-            else return View();
+            else if (!ModelState.IsValid)
+            {
+                return View();
+
+            }
+            else
+            {
+                ViewBag.NewUser.PasswordMismatch = true;
+                return View("AccountCreation", NewUser);
+            }
         }
 
         [HttpGet]
