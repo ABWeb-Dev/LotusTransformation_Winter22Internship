@@ -1,12 +1,12 @@
 ﻿body{
     font-size: 16px;
 }
-.Everything{
+/*.Everything{
     height:fit-content;
     resize: both;
     position: relative;
     min-height:100%;
-}
+}*/
 
 .MainBody {
   min-width: 100%;
@@ -18,9 +18,10 @@
 
 .bg-image {
     background-image: url(../Images/Background/20210626_200606.jpg);
-    height: 100vh;
+    height: 130vh;
     background-repeat: no-repeat;
     background-size:cover;
+    position:relative;
 }
 
 .site-links {
@@ -28,8 +29,14 @@
    border-right-width: 0.5px;
    border-right-style: solid;
 }
+.bggreen {
+    background: #8eacac;
+}
+.bgblue {
 
-.body-div-size{
+}
+
+/*.body-div-size{
     height:fit-content;
     min-height:fit-content;
     margin-bottom:0;
@@ -42,13 +49,13 @@
 .site-footer {
     margin: 0;
     height:5.6rem;
-}
+}*/
 /* Added boldness to the font and also made it bigger */
 
 
 /*Header revision*/
 
-.SiteHeader {
+/*.SiteHeader {
     background-color: #8eacac;
     display: grid;
     grid-template-columns: 8% 48% 30% 14%;
@@ -75,9 +82,9 @@
     right: 9.5vw ;
     grid-column: 3 / span 4;
     grid-row: 1 / span 2;
-}
+}*/
 
-.heading-title {
+/*.heading-title {
     font-family: 'Noto Sans Indic Siyaq Numbers', sans-serif;
     grid-column: 2;
     font-size: 3.56vw;
@@ -129,11 +136,14 @@ nav.nav-menu-positioning {
     grid-row: 1 / span 2;
     font-size: 1.35vw;
 }
+  
 
 .site-font-bold {
     font-weight: bold;
     font-size: 1.25vw;
 }
+    */
+    
 
 /*TODO: Responsiveness needs work. Scaling needs to be more proportional and smoother.
     TODO: Resize Login and SignUp Buttons to fit on one "line"

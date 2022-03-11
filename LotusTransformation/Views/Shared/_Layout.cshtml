@@ -1,85 +1,47 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
-
 <html>
 
 <head>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lotus Transformation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Lotus Transformation</title>
+	<link rel="stylesheet" type="text/css" href="~/lib/react-bootstrap/react-bootstrap.min.js">
+	<link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="~/CSS/SharedCustom.css" />
+	<link rel="stylesheet" type="text/css" href="~/CSS/Navigation-with-Button.css">
+	<link rel="stylesheet" type="text/css" href="~/CSS/ValidationRules.css" />
+	<link rel="stylesheet" type="text/css" href="~/CSS/AccountCreationForm.css" /> </head>
+<!--I realized the problem with a lot of the reposivenes of the site was due to it conflicting with the normal css from the shared custom. I commented out most of the SharedCustom CSS and now its working spledingly-->
+  </head>
 
-    
-    <link rel="stylesheet" type="text/css" href="~/lib/react-bootstrap/react-bootstrap.min.js">
-    <link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="~/CSS/SharedCustom.css" />  
-    <link rel="stylesheet" type="text/css" href="~/CSS/Navigation-with-Button.css">
-    <link rel="stylesheet" type="text/css" href="~/CSS/ValidationRules.css" />
-    <link rel="stylesheet" type="text/css" href="~/CSS/AccountCreationForm.css"/>
-    <link href=~/CSS/AccountCreationCSS/PreSessionForm.css/>
-    <script type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="~/lib/jquery-validate/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="~/lib/jquery-validation-unobtrusive/   jquery.validate.unobtrusive.min.js"></script>
-    <script type="text/javascript" src="~/lib/popper.js/cjs/popper.min.js"></script>
-    <script type="text/javascript" src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="~/Javascript/SiteResize.js"></script>
-
-
-</head>
-
-<body class="Everything" id=" Everything">
-    <div class="bg-image body-div-size MainBody" id="MainBody">
-
-        <header class="SiteHeader">
-
-            <a asp-controller="LotusGeneral" asp-action="Home"><img src="~/Images/Logo/R.png" class="Logo"></a>
-
-            <a class="heading-title" asp-controller="LotusGeneral" asp-action="Home">Lotus Transformation</a>
-            <a class="sub-heading-title" asp-controller="LotusGeneral" asp-action="Home">Hollistic Health and Wellness Coaching</a>
-
-        <nav class="NavbarExpand navbar navbar-expand-lg navigation-clean-button nav-menu-positioning">
-           
-            
-
-            <div class="container">
-
-            <button data-bs-toggle="collapse" class="navbar-toggler dropdown-menu" data-bs-target="#navcol-1"> 
-                <span class="visually-hidden">Toggle navigation</span>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-                <div class="collapse navbar-collapse" id="navcol-1">
-
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="About">About</a></li>
-                        <li class="nav-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Meditations">Meditations</a></li>
-                        <li class="nav-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Inspiration">Inspiration</a></li>
-                    </ul>
-
-                    <span class="navbar-text actions sign-in-up"> 
-                        <a class="btn btn-light action-button login" style="color:var(--bs-gray-900);" asp-controller="SignIn" asp-action="SignIn">Log In</a>
-                        <a class="btn btn-light action-button" role="button" style="color: var(--bs-gray-900);" asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</a>
-                    </span>
-                </div>
-            </div>
-        </nav>
-        </header>
-
-        <div class="container py-5 my-5 h-auto" style="background-color:#FAEBD7; border-radius: 15px;">
-             @RenderBody()
-        </div>
-
-    <footer class="header-footer-color site-footer">
-        
-    </footer>
-
-    </div>
-
-
-
-</body>
-</html>
+<body>
+	<div class="bg-image body-div-size MainBody" id="MainBody">
+		<nav class="navbar navbar-expand-lg navbar-light bggreen">
+			<a class="navbar-brand" href="#"> <img src="~/Images/Logo/R.png" width="120" height="125" alt=""></a>
+			<figure>
+				<blockquote class="blockquote">
+					<h1>Lotus Transformation</h1> </blockquote>
+				<figcaption class="blockquote-footer fs-4 fw-bold"> Hollistic Health and Wellness Coaching </figcaption>
+			</figure>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-menu" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+			<div class="collapse navbar-collapse show navbar-menu" id="navbar1">
+				<ul class=" navbar-nav me-auto m-auto">
+					<li class="nav-item fs-4 fw-bold"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Home">Home</a></li>
+					<li class="nav-item fs-4 fw-bold"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="About">About</a></li>
+					<li class="nav-item fs-4 fw-bold"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Services">Services</a></li>
+					<li class="nav-item fs-4 fw-bold"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Meditations">Meditations</a></li>
+					<li class="nav-item fs-4 fw-bold"><a class="nav-link site-font-bold" asp-controller="LotusGeneral" asp-action="Inspiration">Inspiration</a></li>
+				</ul>
+				<div class="btn-group m-auto"> <a class="btn btn-info fs-6 bgblue" style="color:var(--bs-blue-900);" asp-controller="SignIn" asp-action="SignIn">Log In</a> <a class="btn btn-info fs-6 bgblue" role="button" style="color: var(--bs-blue-900);" asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</a> </div>
+			</div>
+		</nav>
+		<div class="container py-5 my-5 h-auto" style="background-color:#FAEBD7; border-radius: 15px;"> @RenderBody() </div>
+	</div>
+	<footer class="footer fixed-bottom mt-auto py-3 bggreen">
+		<div class="container"> <span class="text-muted">footer content here.</span> </div>
+	</footer>
+	<!--Fixed the problem with the header. All the scripts that were added did not work well with one another so I decided to delete them and only have the Bootstrap 5 script-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
