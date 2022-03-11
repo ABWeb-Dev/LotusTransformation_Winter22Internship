@@ -1,11 +1,11 @@
+using LotusTransformation.Data;
+using LotusTransformation.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using LotusTransformation.ViewModels;
-using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore;
-using LotusTransformation.Data;
 
 
 namespace LotusTransformation
@@ -13,7 +13,7 @@ namespace LotusTransformation
     public class Startup
     {
         public Startup(IConfiguration configuration)
-        { 
+        {
             this.Configuration = configuration; ;
         }
 
@@ -24,9 +24,9 @@ namespace LotusTransformation
             services.AddScoped<ClientSignUpVM>();
             services.AddMvcCore().AddRazorRuntimeCompilation();
             services.AddDbContext<LotusTransformationDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LotusTransformationDb")));
-            
-           
-            
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,39 +45,8 @@ namespace LotusTransformation
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action}",
-                    defaults: new
-                    {
-                        controller = "LotusGeneral",
-                        action = "Home"
-                    });
+                    pattern: "{controller=LotusGeneral}/{action=Home}");
             });
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "CreateAccount",
-                    pattern: "{controller}/{action}",
-                    defaults: new
-                    {
-                        controller = "CreateAccount",
-                        action = "CreateAccount"
-                    });
-            });
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "SignIn",
-                    pattern: "{controller}/{action}",
-                    defaults: new
-                    {
-                        controller = "SignIn",
-                        action = "SignIn"
-                    });
-            });
-
-
         }
     }
 }

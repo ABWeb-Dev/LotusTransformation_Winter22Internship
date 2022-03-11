@@ -6,7 +6,7 @@ namespace LotusTransformation.Models
     public class ClientContactInformation
     {
         [Key]
-        public int ContactID { get; set; }
+        public long ContactID { get; set; }
 
         [Required]
         public string Email { get; set; }
@@ -34,7 +34,7 @@ namespace LotusTransformation.Models
         [Required]
         public string Country { get; set; }
 
-        [ForeignKey("ClientID")]
-        public ClientAccountInformation ClientAccountInformation { get; set; }
+        [ForeignKey("ClientContactID")]
+        public ClientAccountInformation Client { get; set; }
     }
 }
