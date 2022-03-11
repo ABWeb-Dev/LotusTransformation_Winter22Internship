@@ -18,9 +18,10 @@
 
 .bg-image {
     background-image: url(../Images/Background/20210626_200606.jpg);
-    height: 100vh;
+    height: 130vh;
     background-repeat: no-repeat;
     background-size:cover;
+    position:relative;
 }
 
 .site-links {
@@ -30,6 +31,9 @@
 }
 .bggreen {
     background: #8eacac;
+}
+.bgblue {
+
 }
 
 /*.body-div-size{
