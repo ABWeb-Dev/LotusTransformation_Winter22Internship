@@ -167,7 +167,7 @@
 
                         <div class="ACFUserName formgroup">
                             <label class="ACFLabels" asp-for="UserName">Username:*</label>
-                            <input type="text" asp-for="UserName" />
+                            <input id="username" type="text" asp-for="UserName" />
                             <span asp-validation-for="UserName"></span>
                         </div>
 
@@ -176,13 +176,15 @@
                             <input type="password" asp-for="Password" />
                             <span asp-validation-for="Password"></span>
                         </div>
-                @{
+
+                        @{
                     
-                    if (@ViewBag.NewUser?.PasswordMismatch??Equals(true))
-                    {
-                        <span>Passwords do not match, please try again.</span>
-                    }
-                }
+                            if (@ViewBag.NewUser?.PasswordMismatch??Equals(true))
+                            {
+                                <span>Passwords do not match, please try again.</span> //TODO: Conditional Works, HTML is generated. Needs CSS, Oddly placed.
+                            }
+                        }
+
                          <div class="ACFVerifyPassword formgroup">
                             <label class="ACFLabels" asp-for="ConfirmPassword">Confirm Password:*</label>
                             <input type="password" asp-for="ConfirmPassword" />
@@ -197,4 +199,5 @@
                  </div>
             </form>
     </main>
+    <script src="~/Javascript/AccountCreation.js"></script>
 </body>

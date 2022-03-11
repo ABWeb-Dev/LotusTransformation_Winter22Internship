@@ -16,5 +16,12 @@ namespace LotusTransformation.Data
         public DbSet<AdminClientNotes> AdminClientNotes { get; set; }
 
         public DbSet<ClientWorkInformation> ClientWorkInformation { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ClientAccountInformation>()
+                .HasIndex(u => new { u.UserName }).IsUnique(true);
+        }
+
     }
 }

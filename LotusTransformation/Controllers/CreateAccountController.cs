@@ -2,8 +2,6 @@
 using LotusTransformation.Models;
 using LotusTransformation.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace LotusTransformation.Controllers
 {
@@ -19,10 +17,8 @@ namespace LotusTransformation.Controllers
 
         [HttpGet]
         [RequireHttps]
-        public ActionResult AccountCreation()
+        public IActionResult AccountCreation()
         {
-            List<string> existingUserNames = _dbContext.ClientAccountInformation.Select(u => u.UserName).ToList();
-            ViewBag.existingUserNames = existingUserNames;
             return View();
         }
 
@@ -39,7 +35,7 @@ namespace LotusTransformation.Controllers
                     FirstName = NewUser.FirstName,
                     MiddleInitial = NewUser.MiddleInitial,
                     LastName = NewUser.LastName,
-                    UserName = NewUser.UserName,
+                    UserName = NewUser.UserName, //TODO: Ajax to FrontEnd 
                     Password = NewUser.Password, //TODO: Learn to SALT and Encypt Passwords & UserName 
                     Contact = new ClientContactInformation()
                     {

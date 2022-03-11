@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace LotusTransformation.ViewModels
 
@@ -92,6 +93,8 @@ namespace LotusTransformation.ViewModels
         public string WorkEmail { get; set; }
 
         public bool PasswordMismatch { get; set; } = false;
+
+        public JsonResult ExistingUser { get; set; }
 
     }
 
