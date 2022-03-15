@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace LotusTransformation.ViewModels
 
@@ -66,35 +65,34 @@ namespace LotusTransformation.ViewModels
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please select phone type")]
         public string PhoneType { get; set; }
 
-        [Required]
+
         public string Occupation { get; set; }
 
-        [Required]
+
         public string Company { get; set; }
 
-        [Required]
+
         public string CompanyStreetAddress1 { get; set; }
 
         public string CompanyStreetAddress2 { get; set; }
 
-        [Required]
+
         public string CompanyCity { get; set; }
 
-        [Required]
         public string CompanyState { get; set; }
 
-        [Required]
+
         public string CompanyPostal { get; set; }
 
-        [Required]
+
         public string CompanyCountry { get; set; }
 
-        [Required]
+
         public string WorkEmail { get; set; }
 
         public bool PasswordMismatch { get; set; } = false;
 
-        public JsonResult ExistingUser { get; set; }
+
 
     }
 

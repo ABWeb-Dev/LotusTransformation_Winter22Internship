@@ -25,6 +25,10 @@
     {
       "library": "react-bootstrap@2.1.1",
       "destination": "wwwroot/lib/react-bootstrap/"
+    },
+    {
+      "library": "jqueryui@1.12.1",
+      "destination": "wwwroot/lib/jqueryui"
     }
   ]
 }

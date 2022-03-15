@@ -1,6 +1,7 @@
 ﻿using LotusTransformation.Data;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Collections.Generic;
+using System.Linq;
 namespace LotusTransformation.Controllers
 {
     [Route("api/[controller]")]
@@ -14,9 +15,27 @@ namespace LotusTransformation.Controllers
         {
             _dbContext = db;
         }
-        public IActionResult Get()
+        [HttpGet]
+        [Route("UserNameFilter")]
+        public IActionResult UserNameFilter()
         {
-            return Ok(_dbContext.ClientAccountInformation);
+            List<string> userNames = _dbContext.ClientAccountInformation
+                .Where(u => u.ClientID != 0)
+                .Select(u => u.UserName).ToList();
+
+
+            return Ok(userNames);
+        }
+
+        [HttpGet]
+        [Route("UserEmailFilter")]
+        public IActionResult UserEmailFilter()
+        {
+            List<string> userEmails = _dbContext.ClientContactInformation
+                .Where(u => u.ContactID != 0)
+                .Select(u => u.Email).ToList();
+
+            return Ok(userEmails);
         }
 
         //// GET: Api/Details/5
