@@ -1,56 +1,96 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-<!DOCTYPE html>
-<html>
+@*<!DOCTYPE html>
+<html class="h-100 w-100 container-fluid p-0 m-0" lang="en-us">
 
 <head>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta charset="utf-8" />
 
 	<title>Lotus Transformation</title>
 	<script type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="~/lib/jquery-validate/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 	<script type="text/javascript" src="~/lib/jqueryui/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="~/lib/react-bootstrap/react-bootstrap.min.js" />
-	<link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap-grid.min.css">
+	<script type="text/javascript" src="~/lib/react-bootstrap/react-bootstrap.min.js"></script>
+	<script type="text/javascript" src="~/lib/twitter-bootstrap/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap-reboot.min.css"/>
+	<link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap-grid.min.css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="~/CSS/SharedCustom.css" />
-	<link rel="stylesheet" type="text/css" href="~/CSS/Navigation-with-Button.css">
+	<link rel="stylesheet" type="text/css" href="~/CSS/Navigation-with-Button.css"/>
 	<link rel="stylesheet" type="text/css" href="~/CSS/ValidationRules.css" />
 	<link rel="stylesheet" type="text/css" href="~/CSS/AccountCreationForm.css" /> 
+	<link rel="stylesheet" type="text/css" href="~/CSS/CSSReset.css" />
 
  </head>
 
-<body>
-	<div class="bg-image body-div-size MainBody" id="MainBody">
-		<nav class="navbar navbar-expand-lg navbar-light bggreen">
-			<a class="navbar-brand" href="#"> <img src="~/Images/Logo/R.png" width="120" height="125" alt=""></a>
-			<figure>
-				<blockquote class="blockquote">
-					<h1>Lotus Transformation</h1>
-				</blockquote>
-				<figcaption class="blockquote-footer fs-4 fw-bold"> Hollistic Health and Wellness Coaching </figcaption>
+<body class="min-vh-100 vw-100 m-0 p-0 bg-image ">
+
+	<header class="TestBorder container-fluid  HeaderFooterGreen">
+
+			<a class="TestBorder position-absolute Logo col" asp-controller="LotusGeneral" asp-action="Home"> <img src="~/Images/Logo/R.png" width="120" height="125" alt=""></a>
+							<!--Add to width/height to shared css-->
+			<figure class=" TestBorder position-relative start-30 container-fluid col container-fluid m-0 ps-5 SiteTitle w-50">
+					
+						<a class=" TestBorder LinkNormalization m-0" asp-controller='LotusGeneral' asp-action="Home"><h1 class="SiteTitle w-50 m-1 d-inline">Lotus Transformation</h1></a> <br />
+						<a class=" TestBorder LinkNormalization m-0" asp-controller='LotusGeneral' asp-action="Home"><h2 class="SiteTitle ps-5 fs-4 d-inline">Holistic Health and Wellness Coaching</h2</a> 
+							
 			</figure>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-menu" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-			<div class="collapse navbar-collapse show navbar-menu" id="navbar1">
-				<ul class=" navbar-nav me-auto m-auto">
-					<li class="nav-item fs-4 fw-bold"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Home">Home</a></li>
-					<li class="nav-item fs-4 fw-bold"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="About">About</a></li>
-					<li class="nav-item fs-4 fw-bold"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Services">Services</a></li>
-					<li class="nav-item fs-4 fw-bold"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Meditations">Meditations</a></li>
-					<li class="nav-item fs-4 fw-bold"><a class="nav-link site-font-bold" asp-controller="LotusGeneral" asp-action="Inspiration">Inspiration</a></li>
+
+			<nav class="navbar col HideNormalNavbar justify-content-md-start mx-0">
+
+				<ul class="mx-3 d-md-inline-flex"> <!--Remove Text Decorations-->
+					
+				
+					<li class="removeListStyleType"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Home">Home</a></li>
+					<li class="removeListStyleType"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="About">About</a></li>
+					<li class="removeListStyleType"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Services">Services</a></li>
+					<li class="removeListStyleType"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Meditations">Meditations</a></li>
+					<li class="removeListStyleType"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Inspiration">Inspiration</a></li>
+
+					<button class="btn-primary" >Log In</button>
+					<button class="btn-primary" ><a asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</a></button>
+										
 				</ul>
-				<div class="btn-group m-auto"> <a class="btn btn-info fs-6 bgblue" style="color:var(--bs-blue-900);" asp-controller="SignIn" asp-action="SignIn">Log In</a> <a class="btn btn-info fs-6 bgblue" role="button" style="color: var(--bs-blue-900);" asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</a> </div>
+
+		<div class="dropdown hidden DisplayMobileMenu">
+	
+				<button class="dropdown-toggle"type="button" data-bs-toggle="dropdown" data-bs-target="#navbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+
+				<div class=dropdown-menu>
+
+				<ul class=" navbar mx-3"> <!--Remove Text Decorations-->
+					
+				
+					<li class="dropdown-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Home">Home</a></li>
+					<li class="dropdown-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="About">About</a></li>
+					<li class="dropdown-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Services">Services</a></li>
+					<li class="dropdown-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Meditations">Meditations</a></li>
+					<li class="dropdown-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Inspiration">Inspiration</a></li>
+
+					<button class="btn-primary" >Log In</button>
+					<button class="btn-primary" ><a asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</a></button>
+										
+				</ul>
+
 			</div>
+		</div>
+
 		</nav>
-		<div class="container py-5 my-5 h-auto" style="background-color:#FAEBD7; border-radius: 15px;"> @RenderBody() </div>
-	</div>
-	<footer class="footer fixed-bottom mt-auto py-3 bggreen">
+
+</header>
+
+		<article class= "pt-5 h100 w-75 pb-5 m-0" style="background-color:#FAEBD7">
+			@RenderBody() 
+		</article>
+
+	<footer class="footer py-3 HeaderFooterGreen">
 		<div class="container"> <span class="text-muted">footer content here.</span> </div>
 	</footer>
-	<!--Fixed the problem with the header. All the scripts that were added did not work well with one another so I decided to delete them and only have the Bootstrap 5 script-->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-	</body>
+</body>*@

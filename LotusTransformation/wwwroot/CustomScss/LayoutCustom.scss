@@ -1,0 +1,28 @@
+﻿
+// Variable overrides Below Here
+
+$BethanyGreen: #8eacac;
+$Test: #2a609c;
+
+
+// Variable overrides Above here
+// Import function and variables
+@import "../lib/bootstrap/scss/_functions.scss";
+@import "../lib/bootstrap/scss/_variables.scss";
+@import "../lib/bootstrap/scss/_mixins.scss";
+// Variable Mapping Below Here
+$Custom-Colors:(
+    "BethanyGreen": $BethanyGreen,
+    "Test": $Test
+);
+
+$theme-colors: map-merge($theme-colors, $Custom-Colors);
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+$utilities-colors: map-merge($utilities-colors, $theme-colors-rgb);
+$utilities-text-colors: map-loop($utilities-colors, rgba-css-var, "$key", "text");
+$utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
+
+//Variable Mapping Above Here
+
+//Import Bootstrap
+@import "../lib/bootstrap/scss/bootstrap.scss";

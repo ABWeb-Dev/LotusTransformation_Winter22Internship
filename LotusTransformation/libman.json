@@ -3,10 +3,6 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
-      "library": "twitter-bootstrap@5.1.3",
-      "destination": "lib/twitter-bootstrap/"
-    },
-    {
       "library": "jquery@3.6.0",
       "destination": "lib/jquery/"
     },
@@ -29,6 +25,11 @@
     {
       "library": "jqueryui@1.12.1",
       "destination": "wwwroot/lib/jqueryui"
+    },
+    {
+      "provider": "unpkg",
+      "library": "bootstrap@5.1.3",
+      "destination": "wwwroot/lib/bootstrap/"
     }
   ]
 }

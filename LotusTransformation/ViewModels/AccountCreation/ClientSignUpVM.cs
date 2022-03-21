@@ -6,12 +6,13 @@ namespace LotusTransformation.ViewModels
     public class ClientSignUpVM
     {
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your first name")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "First name is required")]
         [RegularExpression("^((?!^FirstName$)[a-zA-Z '])+$", ErrorMessage = "Please only use letters in your name")]
         [MinLength(2)]
         [MaxLength(25)]
         public string FirstName { get; set; }
 
+        [MaxLength(4)]
         public char MiddleInitial { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your last name")]

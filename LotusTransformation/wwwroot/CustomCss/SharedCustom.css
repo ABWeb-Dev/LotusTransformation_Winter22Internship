@@ -1,0 +1,74 @@
+﻿/* General, all purpose CSS goes here. If it conflicts with Bootstrap or responsiveness, find another method*/
+
+/*Site Body and Background*/
+body{
+    font-size: 16px;
+}
+
+.bg-image {
+    background-image: url(../Images/Background/20210626_200606.jpg);
+    height: 100%;
+    min-height: 100%;
+    background-size: cover;
+    position: absolute;
+}
+
+/*********************************/
+
+/*Navagation and Header*/
+
+.SiteTitles{
+    letter-spacing: .25rem;
+    font-stretch: expanded;
+}
+
+.SubTitle{
+    text-indent:.75rem;
+}
+.Site-Links {
+   color: var(--bs-blue-900);
+   border-right-width: 0.5px;
+   border-right-style: solid;
+}
+.HeaderFooterGreen {
+    background: #8eacac;
+}
+.bgblue {
+
+}
+
+.TestBorder {
+    border: 1px solid black;
+}
+
+.Logo{
+    height: 8rem;
+    width: 8rem;
+}
+
+.removeListStyleType{
+    list-style-type: none;
+}
+
+.LinkNormalization, .LinkNormalization:hover, .LinkNormalization:focus  { 
+    text-decoration: none;
+    color: black;
+}
+/*********************************/
+
+/*Smaller Device Design*/
+
+
+.hidden {
+    visibility: hidden;
+}
+
+@media (max-width: 800px){
+    .HideNormalNavbar{
+        visibility: hidden;
+    }
+
+    .DisplayMobileMenu{
+        visibility: visible;
+    }
+}
