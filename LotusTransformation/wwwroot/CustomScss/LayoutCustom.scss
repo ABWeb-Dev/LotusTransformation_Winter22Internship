@@ -11,10 +11,21 @@ $Test: #2a609c;
 @import "../lib/bootstrap/scss/_variables.scss";
 @import "../lib/bootstrap/scss/_mixins.scss";
 // Variable Mapping Below Here
-$Custom-Colors:(
-    "BethanyGreen": $BethanyGreen,
-    "Test": $Test
+
+$Custom-Position-Values:(
+    5: 5%,
+    10: 10%,
+    15: 15%,
+    20: 20%,
+    25: 25%,
+    30: 30%,
+    35: 35%,
+    40: 45%
 );
+
+$position-values: map-merge($position-values, $Custom-Position-Values);
+
+$Custom-Colors: ( "BethanyGreen": $BethanyGreen, "Test": $Test );
 
 $theme-colors: map-merge($theme-colors, $Custom-Colors);
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
