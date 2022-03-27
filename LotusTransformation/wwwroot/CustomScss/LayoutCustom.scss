@@ -1,39 +1,229 @@
-﻿
-// Variable overrides Below Here
+﻿//Custom Sass File for site
 
+@use "sass:math"; //Disregard warning, works as intended.
+
+/*Custom Site Color Palette, subject to change*/
 $BethanyGreen: #8eacac;
-$Test: #2a609c;
+$BethanyBlue: #7B99AD;
+$BethanyGrey: #898592;
+$BethanySkyBlye: #AEDBE5;
+$BethanyBeige: #F6EFD8;
+/*Custom Site Color Paltte, subject to changes*/
+
+/* Root element changes Below*/
+/****************************/
+html{
+    font-size: 16px; //Declared for REM value
+} 
+
+.siteBackground {
+    background-image: url("../Images/Background/20210626_200606.jpg");
+}
+/****************************/
+/*Root Element Changes Above*/
 
 
-// Variable overrides Above here
-// Import function and variables
-@import "../lib/bootstrap/scss/_functions.scss";
-@import "../lib/bootstrap/scss/_variables.scss";
-@import "../lib/bootstrap/scss/_mixins.scss";
-// Variable Mapping Below Here
+//Site Wide Changes Below
+/****************************/
+a {
+    margin: 0;
+    padding: 0;
+    display: contents;
+}
 
-$Custom-Position-Values:(
-    5: 5%,
-    10: 10%,
-    15: 15%,
-    20: 20%,
-    25: 25%,
-    30: 30%,
-    35: 35%,
-    40: 45%
-);
+//Site Wide Changes Above
+/****************************/
 
-$position-values: map-merge($position-values, $Custom-Position-Values);
 
-$Custom-Colors: ( "BethanyGreen": $BethanyGreen, "Test": $Test );
 
-$theme-colors: map-merge($theme-colors, $Custom-Colors);
-$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
-$utilities-colors: map-merge($utilities-colors, $theme-colors-rgb);
-$utilities-text-colors: map-loop($utilities-colors, rgba-css-var, "$key", "text");
-$utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
+@media (min-width: 1000px){
 
-//Variable Mapping Above Here
+    .LayoutBody {
+        display: grid;
+        grid-template-columns: 12.5% 75% 12.50%;
+    }
 
-//Import Bootstrap
-@import "../lib/bootstrap/scss/bootstrap.scss";
+    .header {
+        grid-column: 1 / span 3;
+        background-color: $BethanyGreen;
+        display: grid;
+        grid-template-columns: .75fr 1fr 1fr 1fr 1fr 1fr;
+        height: 7rem;
+        width: 100vw;
+        grid-template-rows: auto auto;
+
+        .logo {
+            grid-column: 1 / span 1;
+            grid-row: 1 / span 2;
+            width: math.div(75px, 125px) * 100%;
+            height: math.div(100px, 70px) * 103%;
+        }
+
+        .title {
+            position: relative;
+            right: 3.5rem;
+            grid-column: 2 / span 3;
+            font-size: 3rem;
+            letter-spacing: .25rem;
+            width: fit-content;
+            bottom: 4rem;
+        }
+
+        .subtitle {
+            position: relative;
+            grid-row: 2;
+            grid-column: 2 / span 3;
+            font-size: 2rem;
+            color: #47454d;
+            width: fit-content;
+            top: 1rem;
+        }
+
+        .navbar {
+            margin-left:.1rem;
+            position: sticky;
+            grid-row: 1 / span 2;
+            grid-column: 4 / span 5;
+            align-content: center;
+            width: fit-content;
+            left: 57.37rem;
+            margin-right: 13.4%;
+            height: fit-content;
+            top: 4.45rem;
+
+            .navUl {
+                display: inline-flex;
+                background-color: $BethanyBeige;
+                border-start-start-radius: .3rem;
+                border-radius: .3rem 0.3rem 0 0;
+                width: fit-content;
+            }
+
+            .navLi {
+                padding: 0 .25rem 0 .25rem;
+                font-size: 1.75rem;
+                background-color: $BethanyBlue;
+                margin: .25rem .3rem .3rem .3rem;
+                border-radius: .25rem;
+                position: relative;
+            }
+
+            .navLi:hover {
+                bottom: .5rem;
+                background-image: linear-gradient($BethanyGreen, $BethanyBlue)
+            }
+        }
+
+        .LogInButton {
+            position: sticky;
+            margin-top: 1rem;
+            margin-right: .5rem;
+            grid-column: 6 / span 6;
+            bottom: 93%;
+            left: 87.5%;
+            background-color: $BethanyBlue;
+            width: fit-content;
+            height: fit-content;
+            font-size: 1.75rem;
+            border: solid black .1rem;
+            border-radius: .3rem;
+        }
+    }
+
+    .SpecificPageContent {
+        background-color: $BethanyBeige;
+        grid-column: 2;
+        min-height: 41.5rem;
+        position: relative;
+    }
+
+
+    .footer {
+        position: relative;
+        grid-column: 1 / span 3;
+        background-color: $BethanyGreen;
+        width: 100vw;
+    }
+}
+
+
+
+//CSS Reset Below Here **********************************************************************************
+//Do Not Edit
+
+/***
+    The new CSS reset - version 1.5.1 (last updated 1.3.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+*:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly. */
+:where([contenteditable]) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}

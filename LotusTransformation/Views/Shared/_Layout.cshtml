@@ -1,7 +1,7 @@
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-@*<!DOCTYPE html>
-<html class="h-100 w-100 container-fluid p-0 m-0" lang="en-us">
+<!DOCTYPE html>
+<html class="siteBackground" lang="en-us">
 
 <head>
 
@@ -9,88 +9,41 @@
 	<meta charset="utf-8" />
 
 	<title>Lotus Transformation</title>
+
+	
 	<script type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="~/lib/jquery-validate/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-	<script type="text/javascript" src="~/lib/jqueryui/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="~/lib/react-bootstrap/react-bootstrap.min.js"></script>
-	<script type="text/javascript" src="~/lib/twitter-bootstrap/js/bootstrap.bundle.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap-reboot.min.css"/>
-	<link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap-grid.min.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="~/CSS/SharedCustom.css" />
-	<link rel="stylesheet" type="text/css" href="~/CSS/Navigation-with-Button.css"/>
-	<link rel="stylesheet" type="text/css" href="~/CSS/ValidationRules.css" />
-	<link rel="stylesheet" type="text/css" href="~/CSS/AccountCreationForm.css" /> 
+	<script type="text/javascript" src="~/CustomJavascript/LayoutResponsiveness.js"></script>
+	<link rel="stylesheet" type="text/css" href="~/CustomCss/LayoutCustom.min.css"/>
 	<link rel="stylesheet" type="text/css" href="~/CSS/CSSReset.css" />
 
- </head>
+</head>
+<body class="LayoutBody">
+	<header class="header">
 
-<body class="min-vh-100 vw-100 m-0 p-0 bg-image ">
+		<a asp-controller="LotusGeneral" asp-action="Home"><img class="logo" src="~/Images/Logo/R.png" /></a>
+		
+		<a asp-controller="LotusGeneral" asp-action="Home"><h1 class="title">LotusTransformation</h1></a>
+		<a asp-controller="LotusGeneral" asp-action="Home"><h2 class="subtitle">Holistic Health and Wellness Coaching</h2></a>
 
-	<header class="TestBorder container-fluid  HeaderFooterGreen">
-
-			<a class="TestBorder position-absolute Logo col" asp-controller="LotusGeneral" asp-action="Home"> <img src="~/Images/Logo/R.png" width="120" height="125" alt=""></a>
-							<!--Add to width/height to shared css-->
-			<figure class=" TestBorder position-relative start-30 container-fluid col container-fluid m-0 ps-5 SiteTitle w-50">
-					
-						<a class=" TestBorder LinkNormalization m-0" asp-controller='LotusGeneral' asp-action="Home"><h1 class="SiteTitle w-50 m-1 d-inline">Lotus Transformation</h1></a> <br />
-						<a class=" TestBorder LinkNormalization m-0" asp-controller='LotusGeneral' asp-action="Home"><h2 class="SiteTitle ps-5 fs-4 d-inline">Holistic Health and Wellness Coaching</h2</a> 
-							
-			</figure>
-
-			<nav class="navbar col HideNormalNavbar justify-content-md-start mx-0">
-
-				<ul class="mx-3 d-md-inline-flex"> <!--Remove Text Decorations-->
-					
-				
-					<li class="removeListStyleType"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Home">Home</a></li>
-					<li class="removeListStyleType"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="About">About</a></li>
-					<li class="removeListStyleType"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Services">Services</a></li>
-					<li class="removeListStyleType"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Meditations">Meditations</a></li>
-					<li class="removeListStyleType"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Inspiration">Inspiration</a></li>
-
-					<button class="btn-primary" >Log In</button>
-					<button class="btn-primary" ><a asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</a></button>
-										
-				</ul>
-
-		<div class="dropdown hidden DisplayMobileMenu">
-	
-				<button class="dropdown-toggle"type="button" data-bs-toggle="dropdown" data-bs-target="#navbar">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-
-				<div class=dropdown-menu>
-
-				<ul class=" navbar mx-3"> <!--Remove Text Decorations-->
-					
-				
-					<li class="dropdown-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Home">Home</a></li>
-					<li class="dropdown-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="About">About</a></li>
-					<li class="dropdown-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Services">Services</a></li>
-					<li class="dropdown-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Meditations">Meditations</a></li>
-					<li class="dropdown-item"><a class="nav-link site-links site-font-bold" asp-controller="LotusGeneral" asp-action="Inspiration">Inspiration</a></li>
-
-					<button class="btn-primary" >Log In</button>
-					<button class="btn-primary" ><a asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</a></button>
-										
-				</ul>
-
-			</div>
-		</div>
-
+		<nav class="navbar">
+			<ul class="navUl">
+				<a asp-controller="LotusGeneral" asp-action="Home"><li class="navLi">Home</li></a>
+				<a asp-controller="LotusGeneral" asp-action="Services"><li class="navLi">Appointments</li></a>
+				<a asp-controller="LotusGeneral" asp-action="Meditations"><li class="navLi">Meditations</li></a>
+				<a asp-controller="LotusGeneral" asp-action="Inspiration"><li class="navLi">Inspirations</li></a>
+			</ul>
 		</nav>
 
-</header>
-
-		<article class= "pt-5 h100 w-75 pb-5 m-0" style="background-color:#FAEBD7">
-			@RenderBody() 
-		</article>
-
-	<footer class="footer py-3 HeaderFooterGreen">
-		<div class="container"> <span class="text-muted">footer content here.</span> </div>
+		<a asp-controller="SignIn" asp-action="SignIn"><button class="LogInButton"> Log In/Sign Up</button></a>
+	</header>
+	<div class="SpecificPageContent">
+		@RenderBody();
+	</div>
+	<footer class="footer">
+		<p>&copy;LotusTransformation LLC</p>
+		<p>filler</p>
+		<p>filler</p>
+		<p>filler</p>
 	</footer>
-</body>*@
+</body>
+</html>
