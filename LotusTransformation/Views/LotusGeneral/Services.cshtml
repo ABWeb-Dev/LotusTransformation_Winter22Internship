@@ -1,3 +1,26 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!-- Trying to implement a calendar as a place holder until we start building a scheduler, right now having problems implementing the basic bootstrap datepicker -->
+ <section class="container">
+  <h2 class="py-2">Our Services Include:</h2>
+
+  <h5 class="py-4">1 on 1 Coaching</h5>
+  <h5 class="py-4">Group Meditation</h5>
+  <h5 class="py-4">Consulting</h5>
+  <form class="row">
+    <label for="date" class="col-1 col-form-label">Date</label>
+    <div class="col-5">
+      <div class="input-group date" id="datepicker">
+        <input type="text" class="form-control" id="date"/>
+        <span class="input-group-append">
+          <span class="input-group-text bg-light d-block">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </span>
+      </div>
+    </div>
+  </form>
+</section>
+
+

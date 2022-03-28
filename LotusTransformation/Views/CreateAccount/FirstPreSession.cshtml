@@ -1,0 +1,50 @@
+﻿@model LotusTransformation.ViewModels.ClientResponses.ClientResponsesPreSessionViewModel;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<main>
+    <h1>
+        Congratulations on creating your account, and thank you for joining Lotus Transformation!
+    </h1>
+
+    <p>In order to best guide you, I just need you to answer some short questions.</p>
+
+    <p>First,please print, read and sign this document<a href="~/CoachingForms/Coaching_Agreement_.pdf" download="true"></a>. You may upload it through your by going to
+        Account>Documents>Upload</p>
+
+    <form class="PreSessionForm">
+
+        <div class="PreSessionQuestion1">
+            <label asp-for="PreSessionQuestionOne">How was your week?</label>
+            <textarea maxlength="500" class="TextBoxSizer"></textarea>
+        </div>
+
+        <div class="PreSessionQuestion2">
+            <label asp-for="PreSessionQuestionTwo">What do you want to get out of our session?</label>
+            <textarea maxlength="500"></textarea>
+        </div>
+
+        <div class="PreSessionQuestion3">
+            <label asp-for="PreSessionQuestionThree">What were your wins and challenges for the week?</label>
+            <textarea maxlength="500"></textarea>
+        </div>
+
+        <div class="PreSessionQuestion4">
+            <label asp-for="PreSessionQuestionFour">AWhat do you want to be held accountable for?</label>
+            <textarea maxlength="500"></textarea>
+        </div>
+
+        <div class="PreSessionQuestion5">
+            <label asp-for="PreSessionQuestionFive">What issues do you want to deepen in your session today?</label>
+            <textarea maxlength="500"></textarea>
+        </div>
+
+        <div class="PreSessionQuestion6">
+            <label asp-for="PreSessionQuestionSix">Anything else?</label>
+            <textarea maxlength="500"></textarea>
+        </div>
+
+    </form>
+</main>

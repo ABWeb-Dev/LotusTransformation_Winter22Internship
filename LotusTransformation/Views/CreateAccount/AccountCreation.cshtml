@@ -1,117 +1,231 @@
-﻿@model LotusTransformation.ViewModels.UserSignUpVM;
+﻿<!--TODO: Show template to Bethany, inquire about making the form paginated -->
+@model LotusTransformation.ViewModels.ClientSignUpVM;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
+@using LotusTransformation.ViewModels;
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <body>
-    <link href=~/CSS~/CSS/ValidationRules.css type="text/css" rel="stylesheet"/>
-    <main>
-        <h1>Lotus Transformation: Account Creation Form</h1>
+    <link  href=~/CSS~/CSS/ValidationRules.css type="text/css" rel="stylesheet"/>
+    <link href=~/CSS/AccountCreationCSS/AccountCreationForm.css type="text/css" rel="stylesheet" />
+    <main class="">
 
-        <p>
-            Hello! Thank you for taking the time to consider creating an account. Although an account is not necessary to use the majority of this website's features,
-            it is necessary if you want to start one on one coaching with me. Your understanding and patience is greatly appreciated!
-        </p>
+            <form class="" asp-controller="CreateAccount" id="ClientAccountCreationForm" asp-antiforgery="true" asp-action="AccountCreation" method="post">
+
+                     <h1>Lotus Transformation: Account Creation Form</h1>
+
+                     <p>
+                        Hello! Thank you for taking the time to consider creating an account. Although an account is not necessary to use the majority of this website's features,
+                        it is necessary if you want to start one on one coaching with me. Your understanding and patience is greatly appreciated!
+                    </p>
+
+                    <div class=""> <!--Find home for displaying, Jquery to dispaly errors, etc-->
+                           <span asp-validation-summary="All">Please correct the following:</span>
+                    </div>
+               
+                        <div class= "">
+                        <p>We need to collect some information in order to sign you up for coaching. Please fill out the form below</p>
+                        <p><em>Required information is marked with an asterisk '*'</em></p>
+                        </div>
+
+                        <div class="">
+
+                            <div class="">
+                                <label asp-for="FirstName">First Name:*</label>
+                                <input class="" type="text" asp-for="FirstName" />
+                                <span asp-validation-for="FirstName"></span>
+                            </div>
+
+                            <div class="">
+                                <label asp-for="MiddleInitial">M.I.:</label>
+                                <input class="" type="text" size="1" asp-for="MiddleInitial" />
+                                <span asp-validation-for="MiddleInitial"></span>
+                            </div>
+
+                            <div class="">
+                                <label asp-for="LastName">Last Name:*</label>
+                                <input class=""type="text" asp-for="LastName" />
+                                <span asp-validation-for="LastName"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="">
+                        
+                            <div class="">
+                                <label asp-for="PhoneNumber">Phone Number:*</label>
+                                <input class="" type="tel" asp-for="PhoneNumber" />
+                                <span asp-validation-for="PhoneNumber"></span>
+                            </div>
+
+                            <div class="">
+                                <label asp-for="PhoneType">Phone Type:*</label>
+                                <select class="" type="text" asp-for="PhoneType">
+                                    <option>Home</option>
+                                    <option>Mobile</option>
+                                    <option>Business</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div class="">
+                                <label asp-for="Email">Email:*</label>
+                                <input class="" id="ClientEmail" type="email" asp-for="Email" />
+                                <span asp-validation-for="Email"></span>
+                                <p id="EmailTaken"></p>
+                            </div>
+
+                        </div>
+
+                        <div class="">
+
+                            <div class="">
+                                <label asp-for="Address1">Street Address:*</label>
+                                <input class="" type="text" asp-for="Address1" />
+                                <span asp-validation-for="Address1"></span>
+                            </div>
+
+                            <div class="">
+                                <label>Address Cont.:</label>
+                                <input class="form-control" type="text" asp-for="Address2" />
+                                <span asp-validation-for="Address2"></span>
+                            </div>
+
+                            <div class="formgroup col-sm-auto">
+                                <label asp-for="City">City:*</label>
+                                <input class="" type="text" asp-for="City" />
+                                <span asp-validation-for="City"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="">
+
+                            <div class="">
+                                <label class="" asp-for="StateOrProvince">State or Province:*</label>
+                                <input class="" type="text" asp-for="StateOrProvince" />
+                                <span asp-validation-for="StateOrProvince"></span>
+                            </div>
+
+                            <div class="" >
+                                <label asp-for="ZIPorPostal">Zip or Postal Code:*</label>
+                                <input class="" type="text" asp-for="ZIPorPostal"/>
+                                <span asp-validation-for="ZIPorPostal"></span>
+                            </div>
+
+                            <div class="">
+                                <label  asp-for="Country">Country:*</label>
+                                <input class="" type="text" asp-for="Country" />
+                                <span asp-validation-for="Country"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="">
+
+                            <div class="">
+                                <label asp-for="Occupation">Occupation</label>
+                                <input class="" type="text" asp-for="Occupation" />
+                                <span asp-validation-for="Occupation"></span>
+                            </div>
+
+                            <div class="">
+                                <label asp-for="Company">Company:</label>
+                                <input class="" type="text" asp-for="Company" />
+                                <span asp-validation-for="Company"></span>
+                            </div>
+
+                            <div class="">
+                                <label asp-for="WorkEmail">WorkEmail:</label>
+                                <input class="" type="text" asp-for="WorkEmail" />
+                                <span asp-validation-for="WorkEmail"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="">
+
+                            <div class="">
+                                <label asp-for="CompanyStreetAddress1">Company Address:</label>
+                                <input class="" type="text" asp-for="CompanyStreetAddress1" />
+                                <span asp-validation-for="CompanyStreetAddress1"></span>
+                            </div>
+
+                    
+                            <div class="">
+                                <label class="" asp-for="CompanyStreetAddress2">Company Address Cont.:</label>
+                                <input class="" type="text" asp-for="CompanyStreetAddress2" />
+                                <span asp-validation-for="CompanyStreetAddress2"></span>
+                            </div>
 
 
-        <div asp-validation-summary="All">
-            <span>Please correct the following:</span>
-        </div>
+                            <div "">
+                                <label asp-for="CompanyCity">Company City:</label>
+                                <input class="" type="text" asp-for="CompanyCity" />
+                                <span asp-validation-for="CompanyCity"></span>
+                            </div>
 
-        <fieldset>
+                        </div>
 
-            <form asp-controller="CreateAccount" asp-antiforgery="true" asp-action="AccountCreation" method="post">
+                        <div class="">
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="FirstName">First Name:</label>
-                    <input type="text" asp-for="FirstName" />
-                    <span asp-validation-for="FirstName"></span>
-                </div>
+                            <div class="">
+                                <label asp-for="CompanyState">Company State:</label>
+                                <input class="" type="text" asp-for="CompanyState" />
+                                <span asp-validation-for="CompanyState"></span>
+                            </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="LastName">Last Name:</label>
-                    <input type="text" asp-for="LastName" />
-                    <span asp-validation-for="LastName"></span>
-                </div>
+                            <div class="">
+                                <label asp-for="CompanyPostal">Company Postal Code:</label>
+                                <input class="" type="text" asp-for="CompanyPostal" />
+                                <span asp-validation-for="CompanyPostal"></span>
+                            </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="PrimaryEmail">Email</label>
-                    <input type="email" asp-for="PrimaryEmail" />
-                    <span asp-validation-for="PrimaryEmail"></span>
-                </div>
+                            <div class="">
+                                <label asp-for="CompanyCountry">Country of Operation:</label>
+                                <input class="" type="text" asp-for="CompanyCountry" />
+                                <span asp-validation-for="CompanyCountry"></span>
+                            </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="PrimaryPhoneNumber">Phone Number</label>
-                    <input type="tel" asp-for="PrimaryPhoneNumber" />
-                    <span asp-validation-for="PrimaryPhoneNumber"></span>
-                </div>
+                        </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="PrimaryPhoneType">Phone Type</label>
-                    <select type="text" asp-for="PrimaryPhoneType">
-                        <option>Home</option>
-                        <option>Mobile</option>
-                        <option>Business</option>
-                        <option>Other</option>
-                    </select>
-                </div>
+                        <div class="">
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="Address1">Street Address</label>
-                    <input type="text" asp-for="Address1" />
-                    <span asp-validation-for="Address1"></span>
-                </div>
+                            <div class="">
+                                <label asp-for="UserName">Username:*</label>
+                                <input class="" id="username" type="text" asp-for="UserName" />
+                                <span asp-validation-for="UserName"></span>
+                                <p id="NameTaken"></p>
+                            </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="Address2">Street Address Coniunued/Apartment Number (Optional)</label>
-                    <input type="text" asp-for="Address2" />
-                    <span asp-validation-for="Address2"></span>
-                </div>
+                            <div class="">
+                                <label asp-for="Password">Password:*</label>
+                                <input class="" type="password" asp-for="Password" />
+                                <span asp-validation-for="Password"></span>
+                            </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="City">City</label>
-                    <input type="text" asp-for="City" />
-                    <span asp-validation-for="City"></span>
-                </div>
+                             <div class="">
+                                <label asp-for="ConfirmPassword">Confirm Password:*</label>
+                                <input class="" type="password" asp-for="ConfirmPassword" />
+                                <span asp-validation-for="ConfirmPassword"></span>
+                                 @{
+                    
+                                    if (@ViewBag.NewUser?.PasswordMismatch??Equals(true))
+                                        {
+                                            <span>Passwords do not match, please try again.</span> //TODO: Transition to ajax/jquery rather than a razor component
+                                        }
+                                  }
+                            </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="StateOrProvince">State or Province</label>
-                    <input type="text" asp-for="StateOrProvince" />
-                    <span asp-validation-for="StateOrProvince"></span>
-                </div>
+                        </div>
 
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="ZIPorPostal">Zip or Postal Code</label>
-                    <input type="text" asp-for="ZIPorPostal"/>
-                    <span asp-validation-for="ZIPorPostal"></span>
-                </div>
-
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="Country">Country</label>
-                    <input type="text" asp-for="Country" />
-                    <span asp-validation-for="Country"></span>
-                </div>
-
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="UserName">Please create a username.</label>
-                    <input type="text" asp-for="UserName" />
-                    <span asp-validation-for="UserName"></span>
-                </div>
-
-                <div class="formgroup">
-                    <label class="col-form-label-lg" asp-for="Password">Please create a password</label>
-                    <input type="password" asp-for="Password" />
-                    <span asp-validation-for="Password"></span>
-                </div>
-
-                <div>
-                    <button type="submit" asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</button>
-                    <button type="reset" asp-controller="CreateAccount" asp-action="AccountCreation">Clear Form</button>
-                </div>
+                        <div class="">
+                            <button class="" type="submit" asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</button>
+                            <button class="" type="reset" asp-controller="CreateAccount" asp-action="AccountCreation">Clear Form</button>
+                        </div>
             </form>
-        </fieldset>
     </main>
+    <script src="~/Javascript/AccountCreation.js"></script>
 </body>

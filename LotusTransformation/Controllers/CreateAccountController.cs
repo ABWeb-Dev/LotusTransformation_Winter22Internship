@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using LotusTransformation.Data;
+﻿using LotusTransformation.Data;
 using LotusTransformation.Models;
 using LotusTransformation.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -10,71 +7,87 @@ namespace LotusTransformation.Controllers
 {
     public class CreateAccountController : Controller
     {
-        
-        private readonly LotusTransformationDBContext _efac;
-        private ExistingUserVM _existingUser;
+
+        private readonly LotusTransformationDBContext _dbContext;
 
         public CreateAccountController(LotusTransformationDBContext Acc)
         {
-            _efac = Acc;
+            _dbContext = Acc;
         }
 
-        [HttpGet][RequireHttps]
-        public ActionResult AccountCreation()
+        [HttpGet]
+        [RequireHttps]
+        public IActionResult AccountCreation()
         {
             return View();
         }
 
-        [HttpPost][RequireHttps]
-        public IActionResult AccountCreation(UserSignUpVM NewUser)
+        [HttpPost]
+        [RequireHttps]
+        public IActionResult AccountCreation(ClientSignUpVM NewUser)
         {
 
-            _existingUser = new ExistingUserVM() { Account = _efac.UserInformation };
-
-            if (ModelState.IsValid)
+            ViewBag.NewUser = NewUser;
+            if (ModelState.IsValid && NewUser.Password.Equals(NewUser.ConfirmPassword))
             {
-                UserInformation user = new UserInformation()
+                ClientAccountInformation user = new ClientAccountInformation()
                 {
                     FirstName = NewUser.FirstName,
-                    LastName = NewUser.LastName,
-                    Address1 = NewUser.Address1,
-                    City = NewUser.City,
-                    StateOrProvince = NewUser.StateOrProvince,
-                    ZIPorPostal = NewUser.ZIPorPostal,
-                    Country = NewUser.Country,
-                    UserName = NewUser.UserName,
-                    Password = NewUser.Password,
-                    PrimaryEmail = NewUser.PrimaryEmail,
-                    PrimaryPhoneNumber = NewUser.PrimaryPhoneNumber,
-                    PrimaryPhoneType = NewUser.PrimaryPhoneType,
-                    SecondaryEmail = NewUser.SecondaryEmail,
-                    DateOfBirth = NewUser.DateOfBirth,
-                    SecondaryPhoneNumber = NewUser.SecondaryPhoneNumber,
-                    SecondaryPhoneType = NewUser.SecondaryPhoneType,
                     MiddleInitial = NewUser.MiddleInitial,
-                    Address2 = NewUser.Address2,
+                    LastName = NewUser.LastName,
+                    UserName = NewUser.UserName, //TODO: Ajax to FrontEnd 
+                    Password = NewUser.Password, //TODO: Learn to SALT and Encypt Passwords & UserName 
+                    Contact = new ClientContactInformation()
+                    {
+                        Address1 = NewUser.Address1,
+                        Address2 = NewUser.Address2,
+                        City = NewUser.City,
+                        StateOrProvince = NewUser.StateOrProvince,
+                        Country = NewUser.Country,
+                        ZIPorPostal = NewUser.ZIPorPostal,
+                        PhoneNumber = NewUser.PhoneNumber,
+                        PhoneType = NewUser.PhoneType,
+                        Email = NewUser.Email,
+                    },
+
+                    Employment = new ClientWorkInformation()
+                    {
+                        Occupation = NewUser.Occupation,
+                        Company = NewUser.Company,
+                        CompanyStreetAddress1 = NewUser.CompanyStreetAddress1,
+                        CompanyStreetAddress2 = NewUser.CompanyStreetAddress2,
+                        CompanyCity = NewUser.CompanyCity,
+                        CompanyState = NewUser.CompanyState,
+                        CompanyPostal = NewUser.CompanyPostal,
+                        CompnayCountry = NewUser.CompanyCountry,
+                        WorkEmail = NewUser.WorkEmail,
+
+                    },
                 };
 
-                LogIn logIn = new LogIn()
-                {
-                    UserName = NewUser.UserName,
-                    Password = NewUser.Password,
-                    Email = NewUser.PrimaryEmail,
-                    
-                };
+                _dbContext.AddRange(user);
+                _dbContext.SaveChanges();
 
-
-               // if (_existingUser.Account.Select(A => A.PrimaryEmail).Contains(NewUser.PrimaryEmail)) return View();// TODO: Make Email Already Exists View
-                // if (_existingUser.Account.Select(A => A.SecondaryEmail).Contains(NewUser.SecondaryEmail)) return View(); //TODO: Make Backup email Already In use View
-                // if (_existingUser.Account.Select(A => A.UserName).Contains(NewUser.UserName)) return View(); // TODO: Make UserName Already in Use View
-
-                _efac.Add(user);
-                _efac.Add(logIn);
-                _efac.SaveChanges();
-
-                return View("CreationSuccess");
+                return RedirectToAction("FirstPreSession");
             }
-            else return View();
+
+            else if (!ModelState.IsValid)
+            {
+                return View();
+
+            }
+            else
+            {
+                ViewBag.NewUser.PasswordMismatch = true;
+                return View("AccountCreation", NewUser);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult FirstPreSession(long id)
+        {
+
+            return View();
         }
     }
 }

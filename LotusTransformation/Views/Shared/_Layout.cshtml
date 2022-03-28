@@ -1,75 +1,49 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<!DOCTYPE html>
 
-<html>
+<!DOCTYPE html>
+<html class="siteBackground" lang="en-us">
 
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
 
-    
-    <link rel="stylesheet" type="text/css" href="~/lib/react-bootstrap/react-bootstrap.min.js">
-    <link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="~/CSS/SharedCustom.css" />  
-    <link rel="stylesheet" type="text/css" href="~/CSS/Navigation-with-Button.css">
-    <link rel="stylesheet" type="text/css" href="~/CSS/ValidationRules.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta charset="utf-8" />
 
+	<title>Lotus Transformation</title>
+
+	
+	<script type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="~/CustomJavascript/LayoutResponsiveness.js"></script>
+	<link rel="stylesheet" type="text/css" href="~/CustomCss/LayoutCustom.min.css"/>
+	<link rel="stylesheet" type="text/css" href="~/CSS/CSSReset.css" />
 
 </head>
+<body class="LayoutBody">
+	<header class="header">
 
-<body>
-    <div class="bg-image body-div-size">
-        <nav class="navbar navbar-light navbar-expand-lg navigation-clean-button header-footer-color header-proportions">
-            <div class="container">
+		<a asp-controller="LotusGeneral" asp-action="Home"><img class="logo" src="~/Images/Logo/R.png" /></a>
+		
+		<a asp-controller="LotusGeneral" asp-action="Home"><h1 class="title">LotusTransformation</h1></a>
+		<a asp-controller="LotusGeneral" asp-action="Home"><h2 class="subtitle">Holistic Health and Wellness Coaching</h2></a>
 
-                <a asp-controller="LotusTransformation" asp-action="Home><img src="~/Images/Logo/R.png" class="Logo"></a>
-                
-                <a class="navbar-brand heading-title" asp-controller="LotusTransformation" asp-action="Home">Lotus Transformation</a>
-                <a class="navbar-brand sub-heading-title" asp-controller="LotusTransformation" asp-action="Home">Hollistic Health and Wellness Coaching</a>
-               
-                <button data-bs-toggle="collapse" class="navbar-toggler dropdown-menu" data-bs-target="#navcol-1"> 
-                    <span class="visually-hidden">Toggle navigation</span>
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+		<nav class="navbar">
+			<ul class="navUl">
+				<a asp-controller="LotusGeneral" asp-action="Home"><li class="navLi">Home</li></a>
+				<a asp-controller="LotusGeneral" asp-action="Services"><li class="navLi">Appointments</li></a>
+				<a asp-controller="LotusGeneral" asp-action="Meditations"><li class="navLi">Meditations</li></a>
+				<a asp-controller="LotusGeneral" asp-action="Inspiration"><li class="navLi">Inspirations</li></a>
+			</ul>
+		</nav>
 
-                <div class="collapse navbar-collapse nav-menu-positioning" id="navcol-1">
-
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link site-links" asp-controller="LotusGeneral" asp-action="Home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link site-links" asp-controller="LotusGeneral" asp-action="About">About</a></li>
-                        <li class="nav-item"><a class="nav-link site-links" asp-controller="LotusGeneral" asp-action="Services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link site-links" asp-controller="LotusGeneral" asp-action="Meditations">Meditations</a></li>
-                        <li class="nav-item"><a class="nav-link site-links" asp-action="Inspiration">Inspiration</a></li>
-                    </ul>
-
-                    <span class="navbar-text actions sign-in-up"> 
-                        <a class="btn btn-light action-button login" style="color:var(--bs-gray-900);" asp-controller="SignIn" asp-action="SignIn">Log In</a>
-                        <a class="btn btn-light action-button" role="button" style="color: var(--bs-gray-900);" asp-controller="CreateAccount" asp-action="AccountCreation">Sign Up</a>
-                    </span>
-
-                </div>
-            </div>
-        </nav>
-
-        <div class="container py-5 my-5 h-auto" style="background-color:#FAEBD7; border-radius: 15px;">
-            <h1 class="display-5 fw-bold">Welcome to Lotus Transformation!</h1>
-             @RenderBody()
-        </div>
-
-    <footer class="header-footer-color site-footer">
-        
-    </footer>
-
-    </div>
-
-
-    <script type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="~/lib/popper.js/cjs/popper.min.js"></script>
-    <script type="text/javascript" src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/lib/jquery-validate/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    <script type="text/javascript" src="~/lib/bootstrap.js"></script>
+		<a asp-controller="SignIn" asp-action="SignIn"><button class="LogInButton"> Log In/Sign Up</button></a>
+	</header>
+	<div class="SpecificPageContent">
+		@RenderBody();
+	</div>
+	<footer class="footer">
+		<p>&copy;LotusTransformation LLC</p>
+		<p>filler</p>
+		<p>filler</p>
+		<p>filler</p>
+	</footer>
 </body>
 </html>
